@@ -10,6 +10,9 @@ export default function buildRss(props) {
 }
 
 function buildTags(tags) {
+  if (!tags) {
+    return;
+  }
   return tags
     .map((tag) => {
       return `<category>${tag}</category>`;
