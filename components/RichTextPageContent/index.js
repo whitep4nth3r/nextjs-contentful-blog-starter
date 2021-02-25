@@ -16,13 +16,9 @@ function slugifyString(string) {
     .toLowerCase();
 }
 
-const DynamicCodeBlock = dynamic(() => import("./CodeBlock"), {
-  ssr: false,
-});
+const DynamicCodeBlock = dynamic(() => import("./CodeBlock"));
 
-const DynamicVideoEmbed = dynamic(() => import("./VideoEmbed"), {
-  ssr: false,
-});
+const DynamicVideoEmbed = dynamic(() => import("./VideoEmbed"));
 
 export function getRichTextRenderOptions(links, isBlogPost = false) {
   const assetBlockMap = new Map(
