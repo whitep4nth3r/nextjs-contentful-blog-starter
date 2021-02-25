@@ -1,0 +1,6 @@
+.recentPostList__header {
+  font-size: 2rem;
+  color: var(--color-foreground);
+  font-family: var(--font-family-main);
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,27 @@
+.tags {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tags__tag {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+  text-transform: uppercase;
+  font-size: 1rem;
+  border: 0.25rem solid var(--color-secondary);
+  border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  font-size: 0.875rem;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  margin-bottom: 0.75rem;
+}

@@ -1,0 +1,13 @@
+.videoEmbed {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin-bottom: 2rem;
+}
+
+.videoEmbed__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

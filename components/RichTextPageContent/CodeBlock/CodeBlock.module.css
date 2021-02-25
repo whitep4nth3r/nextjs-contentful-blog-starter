@@ -1,0 +1,8 @@
+pre[class*="language-"].codeBlock {
+  margin: 2rem 0;
+}
+
+code[class*="language-"].codeBlock__inner {
+  overflow-x: auto;
+  white-space: pre-wrap;
+}

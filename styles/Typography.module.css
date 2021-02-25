@@ -1,0 +1,133 @@
+.heading__h1 {
+  font-size: clamp(2.2rem, 3vw, 3rem);
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  color: var(--color-foreground);
+}
+
+.heading__h2 {
+  font-size: clamp(2rem, 2.8vw, 1.8rem);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  color: var(--color-foreground);
+}
+
+.heading__h3 {
+  font-size: 1.4rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  color: var(--color-foreground);
+}
+
+.heading__h4 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  color: var(--color-foreground);
+}
+
+.heading__h5 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  color: var(--color-foreground);
+}
+
+.heading__h6 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-foreground);
+}
+
+.bodyCopy {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-weight: var(--font-weight-light);
+  font-family: var(--font-family-main);
+  color: var(--color-foreground);
+  word-break: break-word;
+}
+
+.bodyCopy__bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.blockquote {
+  display: block;
+  margin-block-start: 4rem;
+  margin-block-end: 4rem;
+  margin-inline-start: 2rem;
+  margin-inline-end: 2rem;
+}
+
+.blockquote p {
+  /* todo - clamp! */
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 600px) {
+  .blockquote {
+    margin-inline-start: 4rem;
+    margin-inline-end: 4rem;
+  }
+}
+
+.blockquote:before {
+  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' height='44px' width='44px'%3E%3Cpath fill='%2382af3a' d='M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z' /%3E%3C/svg%3E%0A");
+}
+
+.inlineLink {
+  color: inherit;
+  transition: color var(--global-transition-time) ease-in-out;
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+  text-decoration-thickness: 0.125rem;
+}
+
+.inlineLink:visited {
+  color: var(--color-foreground);
+}
+
+.inlineLink:hover {
+  color: var(--color-foreground);
+}
+
+.inlineLink:focus {
+  outline-width: 0;
+  box-shadow: var(--color-primary) 0 0 0 0.25rem;
+  transition: box-shadow var(--global-transition-time) ease 0s;
+}
+
+.inlineLink:focus:active {
+  outline-width: 0;
+  box-shadow: unset;
+}
+
+.inlineCodeContainer {
+  display: inline;
+}
+
+.inlineCode {
+  color: var(--color-background);
+  background-color: var(--color-foreground);
+  text-shadow: 0 1px rgb(0 0 0 / 30%);
+  font-family: var(--font-family-code);
+  font-size: 1rem;
+}

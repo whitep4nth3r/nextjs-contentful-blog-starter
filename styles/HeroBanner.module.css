@@ -1,0 +1,76 @@
+.heroBanner {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  min-height: 28rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  border-top: 0.5rem solid var(--color-primary);
+  border-bottom: 0.5rem solid var(--color-primary);
+  background-color: var(--color-foreground);
+}
+
+.heroBanner__overlay {
+  background-color: var(--color-foreground);
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+}
+
+.heroBanner__bgImg {
+  object-position: center;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.heroBanner__inner {
+  width: 100%;
+  max-width: var(--wrapper-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin: auto;
+  z-index: 1;
+}
+
+.heroBanner__textContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.heroBanner__headline {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  color: var(--color-background);
+  background-color: var(--color-foreground);
+  padding: 0.5rem 1rem;
+}
+
+.heroBanner__subheading {
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: var(--font-weight-normal);
+  font-family: var(--font-family-main);
+  color: var(--color-background);
+  background-color: var(--color-foreground);
+  padding: 0.5rem 1rem;
+}
+
+.heroBanner__ctaContainer {
+  display: flex;
+  align-self: flex-start;
+  padding: 1rem 1rem 0 1rem;
+}
