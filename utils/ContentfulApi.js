@@ -1,6 +1,6 @@
 import { Config } from "./Config";
 
-/*
+/**
  * This class constructs GraphQL queries for blog posts, page content and other data
  * and calls out to the Contentful GraphQL API.
  *
@@ -13,7 +13,7 @@ import { Config } from "./Config";
  */
 
 export default class ContentfulApi {
-  /*
+  /**
    * Fetch the content for a single page by slug.
    *
    * The content type uses the powerful Rich Text field type for the
@@ -106,7 +106,7 @@ export default class ContentfulApi {
     return pageContent.pop();
   }
 
-  /*
+  /**
    * Fetch a batch of blog post slugs (by given page number).
    *
    * This method queries the GraphQL API for a single batch of blog post slugs.
@@ -144,7 +144,7 @@ export default class ContentfulApi {
     return { slugs, total };
   }
 
-  /*
+  /**
    * Fetch all blog post slugs.
    *
    * This method queries the GraphQL API for blog post slugs
@@ -177,7 +177,7 @@ export default class ContentfulApi {
     return returnSlugs;
   }
 
-  /*
+  /**
    * Fetch a batch of blog posts (by given page number).
    *
    * This method queries the GraphQL API for a single batch of blog posts.
@@ -257,7 +257,7 @@ export default class ContentfulApi {
     return { posts, total };
   }
 
-  /*
+  /**
    * Fetch all blog posts.
    *
    * This method queries the GraphQL API for blog posts
@@ -289,7 +289,7 @@ export default class ContentfulApi {
     return returnPosts;
   }
 
-  /*
+  /**
    * Fetch a single blog post by slug.
    *
    * This method is used on pages/blog/[slug] to fetch the data for
@@ -374,7 +374,7 @@ export default class ContentfulApi {
     return post.pop();
   }
 
-  /*
+  /**
    * Fetch n post summaries that are displayed on pages/blog.js.
    *
    * This method accepts a parameter of a page number that calculates
@@ -418,7 +418,7 @@ export default class ContentfulApi {
     return paginatedPostSummaries;
   }
 
-  /*
+  /**
    * Fetch n recent post summaries that are displayed on pages/index.js.
    *
    * This query is purposefully not paginated as it serves as a single
@@ -453,7 +453,7 @@ export default class ContentfulApi {
     return recentPosts;
   }
 
-  /*
+  /**
    * Fetch the total number of blog posts.
    */
   static async getTotalPostsNumber() {
@@ -473,7 +473,7 @@ export default class ContentfulApi {
     return totalPosts;
   }
 
-  /*
+  /**
    * Call the Contentful GraphQL API using fetch.
    *
    * param: query (string)
