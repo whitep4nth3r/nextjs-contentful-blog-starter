@@ -20,7 +20,13 @@ const DynamicCodeBlock = dynamic(() => import("./CodeBlock"));
 
 const DynamicVideoEmbed = dynamic(() => import("./VideoEmbed"));
 
-export function getRichTextRenderOptions(links, isBlogPost = false) {
+const defaultOptions = {
+  isBlogPost: false,
+};
+
+export function getRichTextRenderOptions(links, options = defaultOptions) {
+  const { isBlogPost } = options;
+
   const assetBlockMap = new Map(
     links?.assets?.block?.map((asset) => [asset.sys.id, asset]),
   );
@@ -125,10 +131,10 @@ export function getRichTextRenderOptions(links, isBlogPost = false) {
         switch (__typename) {
           case "VideoEmbed":
             const { embedUrl, title } = entry;
-
             return <DynamicVideoEmbed embedUrl={embedUrl} title={title} />;
           case "CodeBlock":
             const { language, code } = entry;
+
             return <DynamicCodeBlock language={language} code={code} />;
           default:
             return null;
@@ -162,7 +168,7 @@ export default function RichTextPageContent(props) {
     <div className={RichTextPageContentStyles.page__content}>
       {documentToReactComponents(
         richTextBodyField.json,
-        getRichTextRenderOptions(richTextBodyField.links, isBlogPost),
+        getRichTextRenderOptions(richTextBodyField.links, { isBlogPost }),
       )}
     </div>
   );
