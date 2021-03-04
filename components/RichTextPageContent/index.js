@@ -20,12 +20,8 @@ const DynamicCodeBlock = dynamic(() => import("./CodeBlock"));
 
 const DynamicVideoEmbed = dynamic(() => import("./VideoEmbed"));
 
-const defaultOptions = {
-  isBlogPost: false,
-};
-
-export function getRichTextRenderOptions(links, options = defaultOptions) {
-  const { isBlogPost } = options;
+export function getRichTextRenderOptions(links, options) {
+  const { renderH2Links, renderNativeImg } = options;
 
   const assetBlockMap = new Map(
     links?.assets?.block?.map((asset) => [asset.sys.id, asset]),
@@ -67,7 +63,7 @@ export function getRichTextRenderOptions(links, options = defaultOptions) {
         <h1 className={TypographyStyles.heading__h1}>{children}</h1>
       ),
       [BLOCKS.HEADING_2]: (node, children) => {
-        if (isBlogPost) {
+        if (renderH2Links) {
           return (
             <div
               className={RichTextPageContentStyles.page__linkedHeaderContainer}
@@ -145,30 +141,38 @@ export function getRichTextRenderOptions(links, options = defaultOptions) {
           node.data.target.sys.id,
         );
 
-        return (
-          <div className={RichTextPageContentStyles.page__imgContainer}>
-            <Image
-              src={url}
-              alt={description}
-              height={height}
-              width={width}
-              layout="responsive"
-            />
-          </div>
-        );
+        if (renderNativeImg) {
+          return (
+            <div className={RichTextPageContentStyles.page__imgContainer}>
+              <img src={url} alt={description} height={height} width={width} />
+            </div>
+          );
+        } else {
+          return (
+            <div className={RichTextPageContentStyles.page__imgContainer}>
+              <Image
+                src={url}
+                alt={description}
+                height={height}
+                width={width}
+                layout="responsive"
+              />
+            </div>
+          );
+        }
       },
     },
   };
 }
 
 export default function RichTextPageContent(props) {
-  const { richTextBodyField, isBlogPost } = props;
+  const { richTextBodyField, renderH2Links } = props;
 
   return (
     <div className={RichTextPageContentStyles.page__content}>
       {documentToReactComponents(
         richTextBodyField.json,
-        getRichTextRenderOptions(richTextBodyField.links, { isBlogPost }),
+        getRichTextRenderOptions(richTextBodyField.links, { renderH2Links }),
       )}
     </div>
   );
