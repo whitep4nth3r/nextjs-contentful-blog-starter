@@ -1,0 +1,16 @@
+.preview {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  display: block;
+  background-color: var(--color-tertiary);
+}
+
+.preview__text {
+  color: var(--color-background);
+  font-size: 2rem;
+  line-height: 1;
+  text-transform: uppercase;
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+}
