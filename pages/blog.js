@@ -40,7 +40,7 @@ export default function BlogIndex(props) {
   );
 }
 
-export async function getStaticProps({ preview = false })) {
+export async function getStaticProps({ preview = false }) {
   const postSummaries = await ContentfulApi.getPaginatedPostSummaries(1);
   const totalPosts = await ContentfulApi.getTotalPostsNumber();
   const pageContent = await ContentfulApi.getPageContentBySlug(
