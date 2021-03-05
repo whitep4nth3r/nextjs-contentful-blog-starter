@@ -9,7 +9,7 @@ import PageContentWrapper from "@components/PageContentWrapper";
 import HeroBanner from "@components/HeroBanner";
 
 export default function BlogIndex(props) {
-  const { postSummaries, totalPosts, pageContent, url } = props;
+  const { postSummaries, totalPosts, pageContent, url, preview } = props;
 
   const pageTitle = pageContent ? pageContent.title : "Home";
   const pageDescription = pageContent
@@ -17,7 +17,7 @@ export default function BlogIndex(props) {
     : "Articles | Next.js Contentful blog starter";
 
   return (
-    <MainLayout>
+    <MainLayout preview={preview}>
       <PageMeta
         title={pageTitle}
         description={pageDescription}
@@ -40,15 +40,20 @@ export default function BlogIndex(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview = false })) {
   const postSummaries = await ContentfulApi.getPaginatedPostSummaries(1);
   const totalPosts = await ContentfulApi.getTotalPostsNumber();
   const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.blogIndex.slug,
+    Config.pageMeta.blogIndex.slug,
+    {
+      preview: preview,
+    },
   );
 
   return {
     props: {
+      preview,
       postSummaries,
       totalPosts,
       pageContent: pageContent || null,
