@@ -45,7 +45,6 @@ export async function getStaticProps({ preview = false }) {
   const totalPosts = await ContentfulApi.getTotalPostsNumber();
   const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.blogIndex.slug,
-    Config.pageMeta.blogIndex.slug,
     {
       preview: preview,
     },
