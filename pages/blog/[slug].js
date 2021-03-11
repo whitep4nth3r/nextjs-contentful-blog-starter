@@ -41,6 +41,12 @@ export async function getStaticProps({ params, preview = false }) {
     preview: preview,
   });
 
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       preview,
