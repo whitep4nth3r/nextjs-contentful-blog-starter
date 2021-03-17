@@ -8,7 +8,7 @@ function renderTwitter(username) {
       className={`${TypographyStyles.inlineLink} ${AuthorStyles.author__linkText}`}
       href={`https://twitter.com/${username}`}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="nofollow"
     >
       Twitter
     </a>
@@ -21,7 +21,7 @@ function renderTwitch(username) {
       className={`${TypographyStyles.inlineLink} ${AuthorStyles.author__linkText}`}
       href={`https://twitch.tv/${username}`}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="nofollow"
     >
       Twitch
     </a>
@@ -34,7 +34,7 @@ function renderGitHub(username) {
       className={`${TypographyStyles.inlineLink} ${AuthorStyles.author__linkText}`}
       href={`https://github.com/${username}`}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="nofollow"
     >
       GitHub
     </a>
@@ -47,7 +47,7 @@ function renderWebsite(url) {
       className={`${TypographyStyles.inlineLink} ${AuthorStyles.author__linkText}`}
       href={url}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="nofollow"
     >
       Website
     </a>

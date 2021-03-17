@@ -48,7 +48,7 @@ export default function HeroBanner(props) {
             <a
               href={externalLink}
               className={ButtonStyles.button}
-              rel="noopener noreferrer"
+              rel="nofollow"
               target="_blank"
             >
               {ctaText}
