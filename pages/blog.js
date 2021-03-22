@@ -9,7 +9,7 @@ import PageContentWrapper from "@components/PageContentWrapper";
 import HeroBanner from "@components/HeroBanner";
 
 export default function BlogIndex(props) {
-  const { postSummaries, totalPosts, pageContent, url, preview } = props;
+  const { postSummaries, totalPosts, pageContent, preview } = props;
 
   /**
    * This provides some fallback values to PageMeta so that a pageContent

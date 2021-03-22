@@ -430,7 +430,7 @@ export default class ContentfulApi {
     /**
     * Calculate the skip parameter for the query based on the incoming page number.
     * For example, if page === 2, and your page length === 3, 
-    * the skip parameter would would be calculated as 3 (the length of a page)
+    * the skip parameter would be calculated as 3 (the length of a page)
     * therefore skipping the results of page 1.
     */
 

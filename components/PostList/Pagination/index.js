@@ -38,22 +38,22 @@ export default function Pagination(props) {
 
   /**
    * Render page numbers in an <ol>
-   * 
+   *
    * Use <Link /> component for active links
    * Replace <Link /> with <span> using same CSS classes when next or previous
    * navigation is disabled
-   * 
+   *
    * Accessibility considerations
-   * 
+   *
    * Titles of links are 'Page x' rather than just 'x' to avoid needing to enhance screen-reader
    * readability with e.g. link titles
-   * 
+   *
    * Use Chevrons for decorative effect, use aria-hidden=true so they don't interrupt
    * the flow on screen readers
-   * 
+   *
    * Mobile-first considerations
-   * 
-   * All page numbers are on a separate row in the UI to maintain the minimum required click area 
+   *
+   * All page numbers are on a separate row in the UI to maintain the minimum required click area
    * required by WCAG (44px) https://www.w3.org/WAI/WCAG22/Understanding/pointer-target-spacing.html
    * on all screen sizes regardless of number of pages.
    */

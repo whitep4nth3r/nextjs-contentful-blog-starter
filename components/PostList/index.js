@@ -43,7 +43,7 @@ export default function PostList(props) {
    * postsToDisplay: default to the posts fetched from /blog (page 1)
    * currentPage: 1 by default
    * nextDisabled: false by default because we expect to be on page 1 with more than 1 page of posts
-   * prevDisabled: true by default because we expec to be on page 1
+   * prevDisabled: true by default because we expect to be on page 1
    */
   const [postsToDisplay, setPostsToDisplay] = useState(posts);
   const [currentPage, setCurrentPage] = useState(1);
@@ -120,7 +120,6 @@ export default function PostList(props) {
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
           nextDisabled={nextDisabled}
           prevDisabled={prevDisabled}
         />
