@@ -11,7 +11,11 @@ import HeroBanner from "@components/HeroBanner";
 export default function BlogIndex(props) {
   const { postSummaries, totalPosts, pageContent, url, preview } = props;
 
-  const pageTitle = pageContent ? pageContent.title : "Home";
+  /**
+   * This provides some fallback values to PageMeta so that a pageContent
+   * entry is not required for /blog
+   */
+  const pageTitle = pageContent ? pageContent.title : "Blog";
   const pageDescription = pageContent
     ? pageContent.description
     : "Articles | Next.js Contentful blog starter";

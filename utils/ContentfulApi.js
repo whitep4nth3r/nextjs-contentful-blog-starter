@@ -426,6 +426,14 @@ export default class ContentfulApi {
    *
    */
   static async getPaginatedPostSummaries(page) {
+
+    /**
+    * Calculate the skip parameter for the query based on the incoming page number.
+    * For example, if page === 2, and your page length === 3, 
+    * the skip parameter would would be calculated as 3 (the length of a page)
+    * therefore skipping the results of page 1.
+    */
+
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip =
       skipMultiplier > 0 ? Config.pagination.pageSize * skipMultiplier : 0;
