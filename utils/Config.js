@@ -31,6 +31,9 @@ export const Config = {
       url: `${SITE_URL}/blog`,
       slug: "/blog",
     },
+    blogIndexPage: {
+      slug: "/blog/page/[page]",
+    },
     post: {
       slug: "/blog/[slug]",
     },

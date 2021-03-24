@@ -9,36 +9,37 @@ import PageContentWrapper from "@components/PageContentWrapper";
 import HeroBanner from "@components/HeroBanner";
 
 export default function BlogIndex(props) {
-  const { postSummaries, totalPosts, pageContent, preview } = props;
-
-  /**
-   * This provides some fallback values to PageMeta so that a pageContent
-   * entry is not required for /blog
-   */
-  const pageTitle = pageContent ? pageContent.title : "Blog";
-  const pageDescription = pageContent
-    ? pageContent.description
-    : "Articles | Next.js Contentful blog starter";
+  const {
+    postSummaries,
+    totalPosts,
+    currentPage,
+    totalPages,
+    pageContent,
+    preview,
+  } = props;
 
   return (
     <MainLayout preview={preview}>
       <PageMeta
-        title={pageTitle}
-        description={pageDescription}
+        title={pageContent.title}
+        description={pageContent.description}
         url={Config.pageMeta.blogIndex.url}
       />
 
-      {pageContent && pageContent.heroBanner !== null && (
+      {pageContent.heroBanner !== null && (
         <HeroBanner data={pageContent.heroBanner} />
       )}
 
       <ContentWrapper>
-        {pageContent && pageContent.body && (
-          <PageContentWrapper>
-            <RichTextPageContent richTextBodyField={pageContent.body} />
-          </PageContentWrapper>
-        )}
-        <PostList posts={postSummaries} totalPosts={totalPosts} />
+        <PageContentWrapper>
+          <RichTextPageContent richTextBodyField={pageContent.body} />
+        </PageContentWrapper>
+        <PostList
+          posts={postSummaries}
+          totalPosts={totalPosts}
+          totalPages={totalPages}
+          currentPage={currentPage}
+        />
       </ContentWrapper>
     </MainLayout>
   );
@@ -54,12 +55,16 @@ export async function getStaticProps({ preview = false }) {
     },
   );
 
+  const totalPages = Math.ceil(totalPosts / Config.pagination.pageSize);
+
   return {
     props: {
       preview,
       postSummaries,
       totalPosts,
-      pageContent: pageContent || null,
+      totalPages,
+      currentPage: "1",
+      pageContent,
     },
   };
 }

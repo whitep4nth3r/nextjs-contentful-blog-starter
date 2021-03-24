@@ -5,8 +5,8 @@
 .pagination__list {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding: 0;
 }
@@ -15,7 +15,6 @@
   font-family: var(--font-family-main);
   font-size: 1.2rem;
   text-decoration: none;
-  margin-bottom: 1.5rem;
 }
 
 .pagination__listItem a {
@@ -59,7 +58,7 @@
   display: flex;
 }
 
-.pagination__listItem__active a {
+.pagination__listItem__pageDescriptor {
   text-decoration: underline;
   text-decoration-color: var(--color-secondary);
   text-underline-offset: 0.5rem;
