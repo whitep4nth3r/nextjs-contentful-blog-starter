@@ -19,11 +19,20 @@ export default function BlogIndexPage(props) {
     preview,
   } = props;
 
+  /**
+   * This provides some fallback values to PageMeta so that a pageContent
+   * entry is not required for /blog
+   */
+  const pageTitle = pageContent ? pageContent.title : "Blog";
+  const pageDescription = pageContent
+    ? pageContent.description
+    : "Articles | Next.js Contentful blog starter";
+
   return (
     <MainLayout preview={preview}>
       <PageMeta
-        title={`${pageContent.title} Page ${currentPage}`}
-        description={pageContent.description}
+        title={`${pageTitle} Page ${currentPage}`}
+        description={pageDescription}
         url={`${Config.pageMeta.blogIndex.url}/page/${currentPage}`}
       />
 
@@ -83,8 +92,8 @@ export async function getStaticProps({ params, preview = false }) {
       postSummaries,
       totalPosts,
       totalPages,
-      pageContent,
       currentPage: params.page,
+      pageContent: pageContent || null,
     },
   };
 }
