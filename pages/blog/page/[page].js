@@ -60,10 +60,11 @@ export default function BlogIndexPage(props) {
 
 export async function getStaticPaths() {
   const totalPosts = await ContentfulApi.getTotalPostsNumber();
+  const totalPages = Math.ceil(totalPosts / Config.pagination.pageSize);
 
   const paths = [];
 
-  for (let page = 1; page <= totalPosts; page++) {
+  for (let page = 1; page <= totalPages; page++) {
     paths.push({ params: { page: page.toString() } });
   }
 
