@@ -9,7 +9,14 @@ import PageContentWrapper from "@components/PageContentWrapper";
 import HeroBanner from "@components/HeroBanner";
 
 export default function BlogIndex(props) {
-  const { postSummaries, totalPosts, pageContent, preview } = props;
+  const {
+    postSummaries,
+    totalPosts,
+    currentPage,
+    totalPages,
+    pageContent,
+    preview,
+  } = props;
 
   /**
    * This provides some fallback values to PageMeta so that a pageContent
@@ -28,17 +35,20 @@ export default function BlogIndex(props) {
         url={Config.pageMeta.blogIndex.url}
       />
 
-      {pageContent && pageContent.heroBanner !== null && (
+      {pageContent.heroBanner !== null && (
         <HeroBanner data={pageContent.heroBanner} />
       )}
 
       <ContentWrapper>
-        {pageContent && pageContent.body && (
-          <PageContentWrapper>
-            <RichTextPageContent richTextBodyField={pageContent.body} />
-          </PageContentWrapper>
-        )}
-        <PostList posts={postSummaries} totalPosts={totalPosts} />
+        <PageContentWrapper>
+          <RichTextPageContent richTextBodyField={pageContent.body} />
+        </PageContentWrapper>
+        <PostList
+          posts={postSummaries}
+          totalPosts={totalPosts}
+          totalPages={totalPages}
+          currentPage={currentPage}
+        />
       </ContentWrapper>
     </MainLayout>
   );
@@ -54,11 +64,15 @@ export async function getStaticProps({ preview = false }) {
     },
   );
 
+  const totalPages = Math.ceil(totalPosts / Config.pagination.pageSize);
+
   return {
     props: {
       preview,
       postSummaries,
       totalPosts,
+      totalPages,
+      currentPage: "1",
       pageContent: pageContent || null,
     },
   };
