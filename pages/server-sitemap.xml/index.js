@@ -18,7 +18,11 @@ export const getServerSideProps = async (ctx) => {
 
   const blogIndexPageFields = [];
 
-  for (let page = 1; page <= totalPages; page++) {
+  /**
+   * Start from page 2, so we don't replicate /blog
+   * which is page 1
+   */
+  for (let page = 2; page <= totalPages; page++) {
     blogIndexPageFields.push({
       loc: `https://nextjs-contentful-blog-starter.vercel.app/blog/page/${page}`,
       lastmod: new Date().toISOString(),

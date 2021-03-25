@@ -1,9 +1,0 @@
-.blogIndexPage__pageCounter {
-  text-align: center;
-  font-size: 1.4rem;
-  line-height: 1.4;
-  margin-bottom: 1rem;
-  font-weight: var(--font-weight-light);
-  font-family: var(--font-family-main);
-  color: var(--color-foreground);
-}
