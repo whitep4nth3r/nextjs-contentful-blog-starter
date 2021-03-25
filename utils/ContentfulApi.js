@@ -543,7 +543,7 @@ export default class ContentfulApi {
       );
       return data;
     } catch (error) {
-      throw new Error("Could not fetch blog posts!");
+      throw new Error("Could not fetch data from Contentful!");
     }
   }
 }
