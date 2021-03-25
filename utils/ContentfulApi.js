@@ -426,13 +426,12 @@ export default class ContentfulApi {
    *
    */
   static async getPaginatedPostSummaries(page) {
-
     /**
-    * Calculate the skip parameter for the query based on the incoming page number.
-    * For example, if page === 2, and your page length === 3, 
-    * the skip parameter would be calculated as 3 (the length of a page)
-    * therefore skipping the results of page 1.
-    */
+     * Calculate the skip parameter for the query based on the incoming page number.
+     * For example, if page === 2, and your page length === 3,
+     * the skip parameter would be calculated as 3 (the length of a page)
+     * therefore skipping the results of page 1.
+     */
 
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip =
@@ -530,16 +529,11 @@ export default class ContentfulApi {
       : process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 
     const fetchOptions = {
-      spaceID: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-      accessToken: accessToken,
-      endpoint: fetchUrl,
       method: "POST",
       headers: {
         Authorization: "Bearer " + accessToken,
         "Content-Type": "application/json",
       },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
       body: JSON.stringify({ query }),
     };
 
