@@ -51,7 +51,7 @@ export function getRichTextRenderOptions(links, options) {
           className={TypographyStyles.inlineLink}
           href={node.data.uri}
           target="_blank"
-          rel="nofollow"
+          rel="nofollow noreferrer"
         >
           {children}
         </a>

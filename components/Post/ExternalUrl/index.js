@@ -19,7 +19,7 @@ export default function ExternalUrl(props) {
         <Link href={url}>
           <a
             target="_blank"
-            rel="nofollow"
+            rel="nofollow noreferrer"
             className={ExternalUrlStyles.externalUrl__link}
           >
             {formatUrlForDisplay(url)}
