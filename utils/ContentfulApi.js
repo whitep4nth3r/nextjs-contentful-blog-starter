@@ -439,6 +439,7 @@ export default class ContentfulApi {
 
     const query = `{
         blogPostCollection(limit: ${Config.pagination.pageSize}, skip: ${skip}, order: date_DESC) {
+          total
           items {
             sys {
               id
@@ -454,8 +455,8 @@ export default class ContentfulApi {
 
     const response = await this.callContentful(query);
 
-    const paginatedPostSummaries = response.data.blogPostCollection.items
-      ? response.data.blogPostCollection.items
+    const paginatedPostSummaries = response.data.blogPostCollection
+      ? response.data.blogPostCollection
       : [];
 
     return paginatedPostSummaries;

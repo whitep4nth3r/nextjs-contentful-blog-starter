@@ -73,10 +73,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const totalPosts = await ContentfulApi.getTotalPostsNumber();
-  const totalPages = Math.ceil(totalPosts / Config.pagination.pageSize);
   const postSummaries = await ContentfulApi.getPaginatedPostSummaries(
     params.page,
+  );
+  const totalPages = Math.ceil(
+    postSummaries.total / Config.pagination.pageSize,
   );
   const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.blogIndex.slug,
@@ -88,7 +89,7 @@ export async function getStaticProps({ params, preview = false }) {
   return {
     props: {
       preview,
-      postSummaries,
+      postSummaries: postSummaries.items,
       totalPages,
       currentPage: params.page,
       pageContent: pageContent || null,

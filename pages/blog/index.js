@@ -54,7 +54,6 @@ export default function BlogIndex(props) {
 
 export async function getStaticProps({ preview = false }) {
   const postSummaries = await ContentfulApi.getPaginatedPostSummaries(1);
-  const totalPosts = await ContentfulApi.getTotalPostsNumber();
   const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.blogIndex.slug,
     {
@@ -62,12 +61,14 @@ export async function getStaticProps({ preview = false }) {
     },
   );
 
-  const totalPages = Math.ceil(totalPosts / Config.pagination.pageSize);
+  const totalPages = Math.ceil(
+    postSummaries.total / Config.pagination.pageSize,
+  );
 
   return {
     props: {
       preview,
-      postSummaries,
+      postSummaries: postSummaries.items,
       totalPages,
       currentPage: "1",
       pageContent: pageContent || null,
