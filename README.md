@@ -1,5 +1,7 @@
 # Next.js + Contentful Blog Starter
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fnextjs-contentful-blog-starter)
+
 This is an example repository for you to use to create a new blog site using Next.js and Contentful, using Contentful's GraphQL API.
 
 [Read more about the GraphQL API](https://graphql.contentful.com).
