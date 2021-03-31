@@ -54,9 +54,9 @@ Generate a Content Delivery API access token for your Contentful space.
 
 Add your space ID and access token to your `.env.local` file.
 
-## Importing the starter content model into your own Contentful space
+## Importing the starter content model and content into your own Contentful space
 
-To get you up and running quickly on your own version of the application, you can use the Contentful CLI to import the content model from the starter into your own Contentful space — without touching the Contentful UI!
+To get you up and running quickly on your own version of the application, you can use the Contentful CLI to import the content model and the example content from the starter into your own Contentful space — without touching the Contentful UI!
 
 ### Install the Contentful CLI
 
@@ -81,7 +81,7 @@ contentful login
 
 A browser window will open. Follow the instructions to log in to Contentful via the CLI.
 
-### Run the import
+### Import the content model only
 
 The following command in your terminal, ensuring you switch out SPACE_ID for your new space ID.
 
@@ -94,6 +94,18 @@ contentful space import --space-id SPACE_ID --content-file content-model.json
 Refresh Contentful in your browser, navigate to the content model tab, and you'll find the content types have been imported into your space.
 
 ![A screenshot of the imported content model in the Contentful UI](screenshot_content_model.png)
+
+### Import the content model and example content
+
+The following command in your terminal, ensuring you switch out SPACE_ID for your new space ID.
+
+```bash
+cd nextjs-contentful-blog-starter/setup
+
+contentful space import --space-id SPACE_ID --content-file content-plus-content-model.json
+```
+
+Refresh Contentful in your browser, navigate to the content model tab, and you'll find the content types have been imported into your space.
 
 ## Running the application
 
