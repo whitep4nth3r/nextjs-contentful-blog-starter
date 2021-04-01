@@ -84,7 +84,7 @@ Add your space ID and access token to your `.env.local` file.
 
 ## Importing the starter content model and example content into your own Contentful space
 
-To get you up and running quickly on your own version of the application, you can use the Contentful CLI to import the content model and the example content from the starter into your own Contentful space — without touching the Contentful UI!
+To get started quickly on your own version of the application, you can use the Contentful CLI to import the content model and the example content from the starter into your own Contentful space — without touching the Contentful UI!
 
 ### Install the Contentful CLI
 
