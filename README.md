@@ -6,7 +6,7 @@ This is an example repository for you to use to create a new blog site using Nex
 
 ## View the demo site
 
-[Click here to explore the demo site that uses this repository as its source code](https://nextjs-contentful-blog-starter.vercel.app/)
+[Click here to explore the demo site that uses this repository as its source code.](https://nextjs-contentful-blog-starter.vercel.app/)
 
 ## Deploy this site to Vercel
 
@@ -25,6 +25,10 @@ To get started quickly, you can you use the following credentials from the Conte
 NEXT_PUBLIC_CONTENTFUL_SPACE_ID=84zl5qdw0ore
 NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=_9I7fuuLbV9FUV1p596lpDGkfLs9icTP2DZA5KUbFjA
 ```
+
+To get started with your own Contentful space, [sign up for free](https://www.contentful.com/sign-up).
+
+[⏩ Skip to creating your Contentful space](#using-your-own-contentful-account)
 
 ## Getting set up
 
