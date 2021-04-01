@@ -8,28 +8,6 @@ This is an example repository for you to use to create a new blog site using Nex
 
 [Click here to explore the demo site that uses this repository as its source code.](https://nextjs-contentful-blog-starter.vercel.app/)
 
-## Deploy this site to Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fnextjs-contentful-blog-starter)
-
-During the deploy process, add the following environment variables to Vercel.
-
-```text
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID
-NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
-```
-
-To get started quickly, you can you use the following credentials from the Contentful example space.
-
-```text
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID=84zl5qdw0ore
-NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=_9I7fuuLbV9FUV1p596lpDGkfLs9icTP2DZA5KUbFjA
-```
-
-To get started with your own Contentful space, [sign up for free](https://www.contentful.com/sign-up).
-
-[⏩ Skip to creating your Contentful space](#using-your-own-contentful-account)
-
 ## Getting set up
 
 Fork the repository to your GitHub account and clone it to your local machine.
@@ -133,4 +111,15 @@ Navigate to the project directory in a terminal window and run:
 
 ```bash
 npm run dev
+```
+
+## Deploy this site to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fnextjs-contentful-blog-starter)
+
+During the deploy process, add the following environment variables to Vercel. Use the same credentials as you set up in your local development environment.
+
+```text
+NEXT_PUBLIC_CONTENTFUL_SPACE_ID
+NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
 ```
