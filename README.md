@@ -1,10 +1,30 @@
 # Next.js + Contentful Blog Starter
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fnextjs-contentful-blog-starter)
-
 This is an example repository for you to use to create a new blog site using Next.js and Contentful, using Contentful's GraphQL API.
 
 [Read more about the GraphQL API](https://graphql.contentful.com).
+
+## View the demo site
+
+[Click here to explore the demo site that uses this repository as its source code](https://nextjs-contentful-blog-starter.vercel.app/)
+
+## Deploy this site to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fnextjs-contentful-blog-starter)
+
+During the deploy process, add the following environment variables to Vercel.
+
+```text
+NEXT_PUBLIC_CONTENTFUL_SPACE_ID
+NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+```
+
+To get started quickly, you can you use the following credentials from the Contentful example space.
+
+```text
+NEXT_PUBLIC_CONTENTFUL_SPACE_ID=84zl5qdw0ore
+NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=_9I7fuuLbV9FUV1p596lpDGkfLs9icTP2DZA5KUbFjA
+```
 
 ## Getting set up
 
@@ -38,7 +58,9 @@ NEXT_PUBLIC_CONTENTFUL_SPACE_ID=
 NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=
 ```
 
-### Using example content
+### Using example content from Contentful
+
+**You can choose to use your own Contentful account, or connect to the example space that we've provided.**
 
 If you'd like to view some example content in your development environment to get a feel for how it works, you can use the provided credentials in `env.local.example` which will connect your code to the example space provided by Contentful.
 
@@ -56,7 +78,7 @@ Generate a Content Delivery API access token for your Contentful space.
 
 Add your space ID and access token to your `.env.local` file.
 
-## Importing the starter content model and content into your own Contentful space
+## Importing the starter content model and example content into your own Contentful space
 
 To get you up and running quickly on your own version of the application, you can use the Contentful CLI to import the content model and the example content from the starter into your own Contentful space — without touching the Contentful UI!
 
@@ -83,20 +105,6 @@ contentful login
 
 A browser window will open. Follow the instructions to log in to Contentful via the CLI.
 
-### Import the content model only
-
-The following command in your terminal, ensuring you switch out SPACE_ID for your new space ID.
-
-```bash
-cd nextjs-contentful-blog-starter/setup
-
-contentful space import --space-id SPACE_ID --content-file content-model.json
-```
-
-Refresh Contentful in your browser, navigate to the content model tab, and you'll find the content types have been imported into your space.
-
-![A screenshot of the imported content model in the Contentful UI](screenshot_content_model.png)
-
 ### Import the content model and example content
 
 The following command in your terminal, ensuring you switch out SPACE_ID for your new space ID.
@@ -104,15 +112,21 @@ The following command in your terminal, ensuring you switch out SPACE_ID for you
 ```bash
 cd nextjs-contentful-blog-starter/setup
 
-contentful space import --space-id SPACE_ID --content-file content-plus-content-model.json
+contentful space import --space-id SPACE_ID --content-file content-export.json
 ```
 
-Refresh Contentful in your browser, navigate to the content model tab, and you'll find the content types have been imported into your space.
+You should see this output in the terminal. The import will take around 1 minute to complete.
 
-## Running the application
+![A screenshot of the import command running in a terminal](screenshot_import_terminal.png)
+
+Refresh Contentful in your browser, navigate to the content model tab, and you'll find the content types have been imported into your space. You'll find the example content by clicking on the content tab.
+
+![A screenshot of the imported content model in the Contentful UI](screenshot_content_model.png)
+
+## Running the application in development
 
 Navigate to the project directory in a terminal window and run:
 
 ```bash
-npm run start
+npm run dev
 ```
