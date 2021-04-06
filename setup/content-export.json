@@ -3075,7 +3075,7 @@
           "en-US": "markdown"
         },
         "code": {
-          "en-US": "NEXT_PUBLIC_CONTENTFUL_SPACE_ID=\nNEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN="
+          "en-US": "CONTENTFUL_SPACE_ID=\nCONTENTFUL_ACCESS_TOKEN="
         }
       }
     },

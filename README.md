@@ -36,8 +36,8 @@ npm install
 At the root of the project, create a new `.env.local` file. Add the following environment variable names to the file:
 
 ```text
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID=
-NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_ACCESS_TOKEN=
 ```
 
 ### Using example content from Contentful
@@ -120,6 +120,6 @@ npm run dev
 During the deploy process, add the following environment variables to Vercel. Use the same credentials as you set up in your local development environment.
 
 ```text
-NEXT_PUBLIC_CONTENTFUL_SPACE_ID
-NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
+CONTENTFUL_SPACE_ID
+CONTENTFUL_ACCESS_TOKEN
 ```
