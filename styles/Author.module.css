@@ -20,16 +20,23 @@
 
 .author__links {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 2rem;
   margin-top: 2rem;
+}
+
+@media screen and (min-width: 520px) {
+  .author__links {
+    flex-direction: row;
+  }
 }
 
 .author__linkText {
   text-transform: uppercase;
   color: var(--color-foreground);
   font-weight: var(--font-weight-bold);
+  margin-bottom: 1rem;
 }
 
 .author__name {

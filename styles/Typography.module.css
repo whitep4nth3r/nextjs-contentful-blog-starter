@@ -14,6 +14,8 @@
   font-weight: var(--font-weight-normal);
   font-family: var(--font-family-main);
   color: var(--color-foreground);
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .heading__h3 {
