@@ -39,9 +39,11 @@ export default function BlogIndex(props) {
       )}
 
       <ContentWrapper>
-        <PageContentWrapper>
-          <RichTextPageContent richTextBodyField={pageContent.body} />
-        </PageContentWrapper>
+        {pageContent.body && (
+          <PageContentWrapper>
+            <RichTextPageContent richTextBodyField={pageContent.body} />
+          </PageContentWrapper>
+        )}
         <PostList
           posts={postSummaries}
           totalPages={totalPages}
