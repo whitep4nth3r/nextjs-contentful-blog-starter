@@ -52,9 +52,9 @@ export default function BlogIndex(props) {
   );
 }
 
-export async function getStaticProps({ preview = false }) {
-  const postSummaries = await ContentfulApi.getPaginatedPostSummaries(1);
-  const pageContent = await ContentfulApi.getPageContentBySlug(
+export async function getStaticProps({ preview = false, locale }) {
+  const postSummaries = await ContentfulApi.getPaginatedPostSummaries(1,locale);
+  const pageContent = await ContentfulApi.getPageContentBySlug(locale, 
     Config.pageMeta.blogIndex.slug,
     {
       preview: preview,
