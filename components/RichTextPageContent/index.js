@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import RichTextPageContentStyles from "@styles/RichTextPageContent.module.css";
 import TypographyStyles from "@styles/Typography.module.css";
@@ -27,9 +28,16 @@ export function getRichTextRenderOptions(links, options) {
     links?.assets?.block?.map((asset) => [asset.sys.id, asset]),
   );
 
-  const entryBlockMap = new Map(
-    links?.entries?.block?.map((entry) => [entry.sys.id, entry]),
-  );
+  const entryMap = new Map();
+  // loop through the block linked entries and add them to the map
+  for (const entry of links.entries.block) {
+    entryMap.set(entry.sys.id, entry);
+  }
+
+  // loop through the inline linked entries and add them to the map
+  for (const entry of links.entries.inline) {
+    entryMap.set(entry.sys.id, entry);
+  }
 
   return {
     renderMark: {
@@ -120,8 +128,23 @@ export function getRichTextRenderOptions(links, options) {
           {children}
         </li>
       ),
+      [INLINES.EMBEDDED_ENTRY]: (node, children) => {
+        const entry = entryMap.get(node.data.target.sys.id);
+        const { __typename } = entry;
+
+        switch (__typename) {
+          case "BlogPost":
+            return (
+              <Link href={`/blog/${entry.slug}`}>
+                <a className={TypographyStyles.inlineLink}>{entry.title}</a>
+              </Link>
+            );
+          default:
+            return null;
+        }
+      },
       [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
-        const entry = entryBlockMap.get(node.data.target.sys.id);
+        const entry = entryMap.get(node.data.target.sys.id);
         const { __typename } = entry;
 
         switch (__typename) {
