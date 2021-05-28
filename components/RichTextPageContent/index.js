@@ -30,13 +30,17 @@ export function getRichTextRenderOptions(links, options) {
 
   const entryMap = new Map();
   // loop through the block linked entries and add them to the map
-  for (const entry of links.entries.block) {
-    entryMap.set(entry.sys.id, entry);
+  if (links.entries.block) {
+    for (const entry of links.entries.block) {
+      entryMap.set(entry.sys.id, entry);
+    }
   }
 
   // loop through the inline linked entries and add them to the map
-  for (const entry of links.entries.inline) {
-    entryMap.set(entry.sys.id, entry);
+  if (links.entries.inline) {
+    for (const entry of links.entries.inline) {
+      entryMap.set(entry.sys.id, entry);
+    }
   }
 
   return {
