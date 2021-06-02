@@ -346,7 +346,6 @@ export default class ContentfulApi {
    *
    */
   static async getPostBySlug(slug, options = defaultOptions, locale) {
-    console.log(locale)
     const query = `{
       blogPostCollection(locale: "${locale}", limit: 1, where: {slug: "${slug}"}, preview: ${options.preview}) {
         total
@@ -446,7 +445,7 @@ export default class ContentfulApi {
    * param: page (number)
    *
    */
-  static async getPaginatedPostSummaries(page,locale) {
+  static async getPaginatedPostSummaries(page, locale) {
     /**
      * Calculate the skip parameter for the query based on the incoming page number.
      * For example, if page === 2, and your page length === 3,
