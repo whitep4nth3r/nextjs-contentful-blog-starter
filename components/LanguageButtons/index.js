@@ -11,7 +11,7 @@ export default function LanguageLinks(props) {
     <div className={LanguageButtonsStyles.languageButton} >
       <ul className={LanguageButtonsStyles.languageButton__list}>
         {locales.map((locale) => (
-          <li className={LanguageButtonsStyles.languageButton__listItem} >
+          <li className={LanguageButtonsStyles.languageButton__listItem} key={locale} >
             <Link href={pathname} locale={locale}>
                 <a className={LanguageButtonsStyles.languageButton__listItemLink}>
                   {
