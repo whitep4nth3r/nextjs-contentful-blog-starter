@@ -101,7 +101,6 @@ export default class ContentfulApi {
         }
       }
     }`;
-    console.log(query);
     const response = await this.callContentful(query, options);
     const pageContent = response.data.pageContentCollection.items
       ? response.data.pageContentCollection.items
