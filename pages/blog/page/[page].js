@@ -74,7 +74,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({ params, preview = false ,locale}) {
   const postSummaries = await ContentfulApi.getPaginatedPostSummaries(
     params.page,
   );
@@ -86,6 +86,7 @@ export async function getStaticProps({ params, preview = false }) {
     {
       preview: preview,
     },
+    locale
   );
 
   return {

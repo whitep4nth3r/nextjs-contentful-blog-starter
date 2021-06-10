@@ -1,0 +1,45 @@
+.languageButton {
+  width: 100%;
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.languageButton__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 2rem 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.languageButton__listItem {
+  max-width: 2.75rem;
+  display: inline-flex;
+}
+
+.languageButton__listItemLink {
+  display: block;
+  cursor: pointer;
+  color: var(--color-foreground);
+}
+
+.languageButton__listItemLink:focus {
+  outline-width: 0;
+  box-shadow: var(--color-primary) 0 0 0 0.25rem;
+  transition: box-shadow var(--global-transition-time) ease 0s;
+}
+
+.languageButton__listItemLink:focus:active {
+  outline-width: 0;
+  box-shadow: unset;
+}
+
+.languageButton__listItemLink svg path {
+  transition: fill var(--global-transition-time) ease-in-out;
+}
+
+.languageButton__listItemLink svg:hover path {
+  fill: var(--color-primary);
+}

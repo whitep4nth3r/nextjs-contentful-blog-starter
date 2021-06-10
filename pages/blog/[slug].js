@@ -38,10 +38,10 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export async function getStaticProps({ params, preview = false, locale }) {
   const post = await ContentfulApi.getPostBySlug(params.slug, {
-    preview: preview,
-  });
+    preview: preview, 
+  }, locale);
 
   // Add this with fallback: "blocking"
   // So that if we do not have a post on production,
