@@ -559,7 +559,6 @@ export default class ContentfulApi {
       },
       body: JSON.stringify({ query }),
     };
-
     try {
       const data = await fetch(fetchUrl, fetchOptions).then((response) =>
         response.json(),
