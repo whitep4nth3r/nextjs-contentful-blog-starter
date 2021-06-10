@@ -56,11 +56,12 @@ export default function BlogIndex(props) {
 
 export async function getStaticProps({ preview = false, locale }) {
   const postSummaries = await ContentfulApi.getPaginatedPostSummaries(1,locale);
-  const pageContent = await ContentfulApi.getPageContentBySlug(locale, 
+  const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.blogIndex.slug,
     {
       preview: preview,
     },
+    locale
   );
 
   const totalPages = Math.ceil(

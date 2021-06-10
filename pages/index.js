@@ -43,12 +43,14 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps({ preview = false, locale }) {
-  const pageContent = await ContentfulApi.getPageContentBySlug(locale, 
+export async function getStaticProps({ preview = false, locale}) {
+  console.log(locale, Config.pageMeta.home.slug);
+  const pageContent = await ContentfulApi.getPageContentBySlug( 
     Config.pageMeta.home.slug,
     {
       preview: preview,
     }, 
+    locale
   );
 
   const recentPosts = await ContentfulApi.getRecentPostList(locale);

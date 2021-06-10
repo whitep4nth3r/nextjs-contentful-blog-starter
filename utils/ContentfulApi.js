@@ -39,7 +39,7 @@ export default class ContentfulApi {
    * param: slug (string)
    *
    */
-  static async getPageContentBySlug(locale,slug, options = defaultOptions) {
+  static async getPageContentBySlug(slug, options = defaultOptions, locale) {
     const query = `
     {
       pageContentCollection(locale: "${locale}", limit: 1, where: {slug: "${slug}"}, preview: ${options.preview}) {
@@ -101,13 +101,12 @@ export default class ContentfulApi {
         }
       }
     }`;
-
+    console.log(query);
     const response = await this.callContentful(query, options);
-
     const pageContent = response.data.pageContentCollection.items
       ? response.data.pageContentCollection.items
       : [];
-
+    
     return pageContent.pop();
   }
 
@@ -543,7 +542,10 @@ export default class ContentfulApi {
    * param: query (string)
    */
   static async callContentful(query, options = defaultOptions) {
-    const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
+    let fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
+    if (process.env.CONTENTFUL_ENV) {
+      fetchUrl += `/environments/${process.env.CONTENTFUL_ENV}`;
+    }
 
     const accessToken = options.preview
       ? process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN

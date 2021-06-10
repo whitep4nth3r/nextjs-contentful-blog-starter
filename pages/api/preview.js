@@ -4,7 +4,7 @@
 
 import ContentfulApi from "@utils/ContentfulApi";
 
-export default async function preview(req, res) {
+export default async function preview(req, res, locale) {
   /*
    * Check for the secret and query parameters.
    * This secret should only be known to this API route and the CMS.
@@ -40,7 +40,8 @@ export default async function preview(req, res) {
     case "pageContent":
       preview = await ContentfulApi.getPageContentBySlug(req.query.slug, {
         preview: true,
-      });
+      },
+      locale);
       break;
     default:
       preview = null;
