@@ -5158,7 +5158,7 @@
         "id": "556w2eIsidZbHaFES083x0",
         "type": "Entry",
         "createdAt": "2021-03-31T18:12:55.732Z",
-        "updatedAt": "2021-04-22T19:54:07.203Z",
+        "updatedAt": "2021-06-10T13:24:34.395Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -5166,8 +5166,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 3,
-        "publishedAt": "2021-04-22T19:49:52.637Z",
+        "publishedVersion": 8,
+        "publishedAt": "2021-06-10T13:24:34.395Z",
         "firstPublishedAt": "2021-03-31T18:13:00.401Z",
         "createdBy": {
           "sys": {
@@ -5183,8 +5183,8 @@
             "id": "7rzZOcLgy7z0Ud2Sb5EyHy"
           }
         },
-        "publishedCounter": 2,
-        "version": 5,
+        "publishedCounter": 3,
+        "version": 9,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -5207,13 +5207,6 @@
               "type": "Link",
               "linkType": "Asset",
               "id": "rImaN1nOhnl7aJ4OYwbOp"
-            }
-          },
-          "fr": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Asset",
-              "id": "1bOjFI3RDubwaQK8Ut1yeP"
             }
           }
         },
