@@ -11,10 +11,10 @@ export default async function preview(req, res) {
    *
    * Set your content preview URLS in Contentful > Settings > Content Preview
    *
-   * The preview URL for the blog post content type is
+   * The preview URL for the blogPost content type is
    * http://localhost:3000/api/preview?secret={SECRET}&slug={entry.fields.slug}&contentType=blogPost
    *
-   * The preview URL for the blog post content type is
+   * The preview URL for the pageContent content type is
    * http://localhost:3000/api/preview?secret={SECRET}&slug={entry.fields.slug}&contentType=pageContent
    *
    */
