@@ -40,9 +40,10 @@ export default class ContentfulApi {
    *
    */
   static async getPageContentBySlug(slug, options = defaultOptions) {
+    const variables = { slug, preview: options.preview };
     const query = `
-    {
-      pageContentCollection(limit: 1, where: {slug: "${slug}"}, preview: ${options.preview}) {
+    query GetPageContentBySlug($slug: String!, $preview: Boolean!) {
+      pageContentCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
         items {
           sys {
             id
@@ -102,7 +103,7 @@ export default class ContentfulApi {
       }
     }`;
 
-    const response = await this.callContentful(query, options);
+    const response = await this.callContentful(query, variables, options);
 
     const pageContent = response.data.pageContentCollection.items
       ? response.data.pageContentCollection.items
@@ -130,8 +131,10 @@ export default class ContentfulApi {
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip = skipMultiplier > 0 ? queryLimit * skipMultiplier : 0;
 
-    const query = `{
-        blogPostCollection(limit: ${queryLimit}, skip: ${skip}, order: date_DESC) {
+    const variables = { limit: queryLimit, skip };
+
+    const query = `query GetPaginatedSlugs($limit: Int!, $skip: Int!) {
+        blogPostCollection(limit: $limit, skip: $skip, order: date_DESC) {
           total
           items {
             slug
@@ -139,7 +142,7 @@ export default class ContentfulApi {
           }
         }`;
 
-    const response = await this.callContentful(query);
+    const response = await this.callContentful(query, variables);
 
     const { total } = response.data.blogPostCollection;
     const slugs = response.data.blogPostCollection.items
@@ -201,8 +204,10 @@ export default class ContentfulApi {
     const skipMultiplier = page === 1 ? 0 : page - 1;
     const skip = skipMultiplier > 0 ? queryLimit * skipMultiplier : 0;
 
-    const query = `{
-        blogPostCollection(limit: ${queryLimit}, skip: ${skip}, order: date_DESC) {
+    const variables = { limit: queryLimit, skip };
+
+    const query = `query GetPaginatedBlogPosts($limit: Int!, $skip: Int!) {
+        blogPostCollection(limit: $limit, skip: $skip, order: date_DESC) {
           total
           items {
             sys {
@@ -277,7 +282,7 @@ export default class ContentfulApi {
         }
       }`;
 
-    const response = await this.callContentful(query);
+    const response = await this.callContentful(query, variables);
 
     const { total } = response.data.blogPostCollection;
     const posts = response.data.blogPostCollection.items
@@ -346,8 +351,9 @@ export default class ContentfulApi {
    *
    */
   static async getPostBySlug(slug, options = defaultOptions) {
-    const query = `{
-      blogPostCollection(limit: 1, where: {slug: "${slug}"}, preview: ${options.preview}) {
+    const variables = { slug, preview: options.preview };
+    const query = `query GetPostBySlug($slug: String!, $preview: Boolean!) {
+      blogPostCollection(limit: 1, where: {slug: $slug}, preview: $preview) {
         total
         items {
           sys {
@@ -422,7 +428,7 @@ export default class ContentfulApi {
       }
     }`;
 
-    const response = await this.callContentful(query, options);
+    const response = await this.callContentful(query, variables, options);
     const post = response.data.blogPostCollection.items
       ? response.data.blogPostCollection.items
       : [];
@@ -457,8 +463,10 @@ export default class ContentfulApi {
     const skip =
       skipMultiplier > 0 ? Config.pagination.pageSize * skipMultiplier : 0;
 
-    const query = `{
-        blogPostCollection(limit: ${Config.pagination.pageSize}, skip: ${skip}, order: date_DESC) {
+    const variables = { limit: Config.pagination.pageSize, skip };
+
+    const query = `query GetPaginatedPostSummaries($limit: Int!, $skip: Int!) {
+        blogPostCollection(limit: $limit, skip: $skip, order: date_DESC) {
           total
           items {
             sys {
@@ -473,7 +481,7 @@ export default class ContentfulApi {
         }
       }`;
 
-    const response = await this.callContentful(query);
+    const response = await this.callContentful(query, variables);
 
     const paginatedPostSummaries = response.data.blogPostCollection
       ? response.data.blogPostCollection
@@ -493,8 +501,9 @@ export default class ContentfulApi {
    *
    */
   static async getRecentPostList() {
-    const query = `{
-      blogPostCollection(limit: ${Config.pagination.recentPostsSize}, order: date_DESC) {
+    const variables = { limit: Config.pagination.recentPostsSize };
+    const query = `query GetRecentPostList($limit: Int!) {
+      blogPostCollection(limit: $limit, order: date_DESC) {
         items {
           sys {
             id
@@ -508,7 +517,7 @@ export default class ContentfulApi {
       }
     }`;
 
-    const response = await this.callContentful(query);
+    const response = await this.callContentful(query, variables);
 
     const recentPosts = response.data.blogPostCollection.items
       ? response.data.blogPostCollection.items
@@ -542,7 +551,7 @@ export default class ContentfulApi {
    *
    * param: query (string)
    */
-  static async callContentful(query, options = defaultOptions) {
+  static async callContentful(query, variables = {}, options = defaultOptions) {
     const fetchUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
 
     const accessToken = options.preview
@@ -555,7 +564,7 @@ export default class ContentfulApi {
         Authorization: "Bearer " + accessToken,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ query }),
+      body: JSON.stringify({ query, variables }),
     };
 
     try {
