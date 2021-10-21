@@ -31,3 +31,5 @@ yarn-error.log*
 
 # Generated XML feed at build time
 public/feed.xml
+public/sitemap.xml
+public/robots.txt
