@@ -1,4 +1,4 @@
-export default function ChevronLeft() {
+export default function ChevronRight() {
   return (
     <svg
       aria-hidden="true"
