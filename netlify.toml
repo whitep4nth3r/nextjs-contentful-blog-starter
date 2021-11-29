@@ -5,7 +5,6 @@ publish = ".next"
 package = "@netlify/plugin-nextjs"
 
 [[redirects]]
-  from = "/deloitte/*"
+  from = "/*"
   to = "https://www.deloittedigital.com/:splat"
   status = 200
-  force = true
