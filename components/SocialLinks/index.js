@@ -13,7 +13,7 @@ const socialLinksList = [
   {
     name: "RSS Feed",
     url: "feed.xml",
-    ariaLabel: `View the RSS feed of ${Config.site.domain}`,
+    ariaLabel: `View the RSS feed of ${Config.site.url}`,
     svg: <Feed />,
   },
 ];

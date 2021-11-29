@@ -40,8 +40,8 @@ function buildRssItems(posts) {
           <title>${post.title}</title>
           <description>${post.excerpt}</description>
           <author>${Config.site.email} (${Config.site.owner})</author>
-          <link>https://${Config.site.domain}/blog/${post.slug}</link>
-          <guid>https://${Config.site.domain}/blog/${post.slug}</guid>
+          <link>${Config.site.url}/blog/${post.slug}</link>
+          <guid>${Config.site.url}/blog/${post.slug}</guid>
           <pubDate>${post.date}</pubDate>
           ${buildTags(post.tags)}
           ${buildContent(post.body)}
@@ -60,10 +60,10 @@ export async function getStaticProps() {
       xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
       <title>${Config.site.title}</title>
-      <atom:link href="https://${
-        Config.site.domain
+      <atom:link href="${
+        Config.site.url
       }/feed.xml" rel="self" type="application/rss+xml" />
-      <link>https://${Config.site.domain}</link>
+      <link>${Config.site.url}</link>
       <description>${Config.site.feedDescription}</description>
       ${buildRssItems(posts)}
     </channel>

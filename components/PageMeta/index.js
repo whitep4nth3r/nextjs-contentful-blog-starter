@@ -15,8 +15,8 @@ export default function PageMeta(props) {
       <link
         rel="alternate"
         type="application/rss+xml"
-        title={`RSS Feed for ${Config.site.domain}`}
-        href={`https://${Config.site.domain}/feed.xml`}
+        title={`RSS Feed for ${Config.site.url}`}
+        href={`${Config.site.url}/feed.xml`}
       />
 
       <meta name="title" content={siteTitle} />

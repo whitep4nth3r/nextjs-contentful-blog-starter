@@ -16,7 +16,6 @@ export const Config = {
     owner: "A. Blogger",
     title: "My new Next.js + Contentful blog site",
     url: SITE_URL,
-    domain: "deloitte-contentful-starter.netlify.app/",
     email: "example@example.com",
     feedDescription: "RSS Feed for example.com",
   },
