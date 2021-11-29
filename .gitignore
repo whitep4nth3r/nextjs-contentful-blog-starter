@@ -33,3 +33,6 @@ yarn-error.log*
 public/feed.xml
 public/sitemap.xml
 public/robots.txt
+
+# Local Netlify folder
+.netlify
