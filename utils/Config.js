@@ -9,13 +9,14 @@
  *
  */
 
-const SITE_URL = "https://nextjs-contentful-blog-starter.vercel.app";
+const SITE_URL = "https://deloitte-contentful-starter.netlify.app/";
 
 export const Config = {
   site: {
     owner: "A. Blogger",
     title: "My new Next.js + Contentful blog site",
-    domain: "nextjs-contentful-blog-starter.vercel.app",
+    url: SITE_URL,
+    domain: "deloitte-contentful-starter.netlify.app/",
     email: "example@example.com",
     feedDescription: "RSS Feed for example.com",
   },

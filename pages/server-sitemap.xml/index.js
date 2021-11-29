@@ -8,7 +8,7 @@ export const getServerSideProps = async (ctx) => {
 
   const blogPostFields = blogPostSlugs.map((slug) => {
     return {
-      loc: `https://nextjs-contentful-blog-starter.vercel.app/blog/${slug}`,
+      loc: `${Config.site.url}/blog/${slug}`,
       lastmod: new Date().toISOString(),
     };
   });
@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
    */
   for (let page = 2; page <= totalPages; page++) {
     blogIndexPageFields.push({
-      loc: `https://nextjs-contentful-blog-starter.vercel.app/blog/page/${page}`,
+      loc: `${Config.site.url}/blog/page/${page}`,
       lastmod: new Date().toISOString(),
     });
   }

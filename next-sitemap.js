@@ -1,10 +1,10 @@
 module.exports = {
-  siteUrl: "https://nextjs-contentful-blog-starter.vercel.app/",
+  siteUrl: "https://deloitte-contentful-starter.netlify.app/",
   generateRobotsTxt: true, // (optional)
   robotsTxtOptions: {
     policies: [{ userAgent: "*", disallow: "/api" }],
     additionalSitemaps: [
-      "https://nextjs-contentful-blog-starter.vercel.app/server-sitemap.xml",
+      "https://deloitte-contentful-starter.netlify.app/server-sitemap.xml",
     ],
   },
   exclude: ["/api/*", "/server-sitemap.xml"],
