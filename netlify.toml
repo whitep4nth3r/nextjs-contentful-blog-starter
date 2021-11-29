@@ -3,3 +3,9 @@ publish = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/careers"
+  to = "https://www.deloittedigital.com/us/en/careers.html"
+  status = 200
+  force = true
