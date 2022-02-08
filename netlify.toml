@@ -1,0 +1,3 @@
+[template.environment]
+  CONTENTFUL_SPACE_ID = "Set this to you space id"
+  CONTENTFUL_ACCESS_TOKEN = "Set this to your access token"

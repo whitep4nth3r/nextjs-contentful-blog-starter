@@ -115,11 +115,11 @@ Navigate to the project directory in a terminal window and run:
 npm run dev
 ```
 
-## Deploy this site to Vercel
+## Deploy this site to Netlify
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fwhitep4nth3r%2Fnextjs-contentful-blog-starter)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chrishannaby/nextjs-contentful-blog-starter)
 
-During the deploy process, add the following environment variables to Vercel. Use the same credentials as you set up in your local development environment.
+During the deploy process, add the following environment variables to Netlify. Use the same credentials as you set up in your local development environment.
 
 ```text
 CONTENTFUL_SPACE_ID
