@@ -137,4 +137,28 @@ Copy the generated URL and navigate to Settings > Webhooks in your Contentful sp
 
 Now when you publish an entry in your Contentful space it will trigger a build of your production branch on Netlify.
 
+## Configure Next.js preview mode
+
+In your Contentful space, go to Settings > Content preview and add a new content preview. Under content preview URLs check Blog Post and add this URL
+
+```text
+https://$NETLIFY_URL/api/preview?secret=$SECRET&slug={entry.fields.slug}&contentType=blogPost
+```
+Replacing `$NETLIFY` with the URL of your site deployed on Netlify and `$SECRET` which a secret value that you generate. Store this value as you will add to your Netlify environment variables in a moment.
+
+Check Page Content and add this URL
+```text
+https://$NETLIFY_URL/api/preview?secret=$SECRET&slug={entry.fields.slug}&contentType=pageContent
+```
+Replacing the variables with the same values you used above. Navigate to your site on Netlify and go to Site settings > Build & Deploy > Environment and add the following environment variables
+
+```text
+CONTENTFUL_PREVIEW_SECRET
+NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN
+```
+
+Set `CONTENTFUL_PREVIEW_SECRET` to the value you generated above and used for `$SECRET` in the preview URLs. Set `NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN` to your Contentful Content Preview API access token which can be found under Settings > API keys.
+
+Trigger a new deploy of your site on Netlify so the new variables are applied and you should now be able to enter Preview mode by clicking the preview button on relevant content entries.
+
 
