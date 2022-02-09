@@ -117,7 +117,7 @@ npm run dev
 
 ## Deploy this site to Netlify
 
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chrishannaby/nextjs-contentful-blog-starter)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/whitep4nth3r/nextjs-contentful-blog-starter)
 
 During the deploy process, add the following environment variables to Netlify. Use the same credentials as you set up in your local development environment.
 
