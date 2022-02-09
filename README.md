@@ -125,15 +125,16 @@ During the deploy process, add the following environment variables to Netlify. U
 CONTENTFUL_SPACE_ID
 CONTENTFUL_ACCESS_TOKEN
 ```
+
 ## Publish via webhooks
 
 After you deploy the site to Netlify you can configure it to build whenever new a new entry is published in Contentful. To configure this navigate to your site settings on Netlify and go to the Build & Deploy tab. Find the Build hooks section and add a new build hook. Name the build hook something like Contentful and select your production branch.
 
-![A screenshot of_adding a_build_hook in the Netlify UI](https://user-images.githubusercontent.com/9747201/152900609-c9b1b3e7-9f4e-47f4-a14f-b01acad7412a.png)
+![A screenshot of adding a build_hook in the Netlify UI](screenshot_create_build_hook.png)
 
 Copy the generated URL and navigate to Settings > Webhooks in your Contentful space. Under Webhook Templates click Add next to the Netlify template. Add the URL you just copied and click Create webhook.
 
-![A screenshot of_adding a_build_hook in the Contentful UI](https://user-images.githubusercontent.com/9747201/152900897-d69409e5-c267-46da-88d9-9dbbfbd76234.png)
+![A screenshot of adding a build hook in the Contentful UI](screenshot_configure_build_hook.png)
 
 Now when you publish an entry in your Contentful space it will trigger a build of your production branch on Netlify.
 
@@ -144,12 +145,15 @@ In your Contentful space, go to Settings > Content preview and add a new content
 ```text
 https://$NETLIFY_URL/api/preview?secret=$SECRET&slug={entry.fields.slug}&contentType=blogPost
 ```
+
 Replacing `$NETLIFY` with the URL of your site deployed on Netlify and `$SECRET` which a secret value that you generate. Store this value as you will add to your Netlify environment variables in a moment.
 
 Check Page Content and add this URL
+
 ```text
 https://$NETLIFY_URL/api/preview?secret=$SECRET&slug={entry.fields.slug}&contentType=pageContent
 ```
+
 Replacing the variables with the same values you used above. Navigate to your site on Netlify and go to Site settings > Build & Deploy > Environment and add the following environment variables
 
 ```text
@@ -160,5 +164,3 @@ NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN
 Set `CONTENTFUL_PREVIEW_SECRET` to the value you generated above and used for `$SECRET` in the preview URLs. Set `NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN` to your Contentful Content Preview API access token which can be found under Settings > API keys.
 
 Trigger a new deploy of your site on Netlify so the new variables are applied and you should now be able to enter Preview mode by clicking the preview button on relevant content entries.
-
-
