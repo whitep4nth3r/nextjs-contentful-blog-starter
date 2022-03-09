@@ -13,7 +13,7 @@ const SITE_URL = "https://nextjs-contentful-blog-starter.vercel.app";
 
 export const Config = {
   site: {
-    owner: "VK",
+    owner: "VK test",
     title: "My new Next.js + Contentful blog site",
     domain: "nextjs-contentful-blog-starter.vercel.app",
     email: "example@example.com",
