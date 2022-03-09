@@ -7,6 +7,7 @@ import MainLayout from "@layouts/main";
 import ContentWrapper from "@components/ContentWrapper";
 import PageContentWrapper from "@components/PageContentWrapper";
 import HeroBanner from "@components/HeroBanner";
+const { NEXT_PUBLIC_IS_PREVIEW_SITE } = process.env;
 
 export default function BlogIndex(props) {
   const { postSummaries, currentPage, totalPages, pageContent, preview } =

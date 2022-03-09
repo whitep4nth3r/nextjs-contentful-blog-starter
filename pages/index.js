@@ -7,6 +7,7 @@ import RecentPostList from "@components/RecentPostList";
 import HeroBanner from "@components/HeroBanner";
 import ContentWrapper from "@components/ContentWrapper";
 import PageContentWrapper from "@components/PageContentWrapper";
+const { NEXT_PUBLIC_IS_PREVIEW_SITE } = process.env;
 
 export default function Home(props) {
   const { pageContent, recentPosts, preview } = props;

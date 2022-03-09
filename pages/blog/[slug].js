@@ -4,6 +4,7 @@ import { Config } from "@utils/Config";
 import PageMeta from "@components/PageMeta";
 import MainLayout from "@layouts/main";
 import ContentWrapper from "@components/ContentWrapper";
+const { NEXT_PUBLIC_IS_PREVIEW_SITE } = process.env;
 
 export default function PostWrapper(props) {
   const { post, preview } = props;
