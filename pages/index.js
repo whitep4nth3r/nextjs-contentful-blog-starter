@@ -11,11 +11,11 @@ import PageContentWrapper from "@components/PageContentWrapper";
 export default function Home(props) {
   const { pageContent, recentPosts, preview } = props;
 
-  const pageTitle = pageContent ? pageContent.title : "Home";
+  const pageTitle = pageContent ? pageContent.title : "Domů";
 
   const pageDescription = pageContent
     ? pageContent.description
-    : "Welcome to the Next.js Contentful blog starter";
+    : "Blog na Next.js Contentful";
 
   return (
     <>
