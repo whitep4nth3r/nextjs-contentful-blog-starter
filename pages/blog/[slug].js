@@ -39,8 +39,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, preview = false }) {
+  const previewData = NEXT_PUBLIC_IS_PREVIEW_SITE || preview;
   const post = await ContentfulApi.getPostBySlug(params.slug, {
-    preview: preview,
+    preview: previewData,
   });
 
   // Add this with fallback: "blocking"

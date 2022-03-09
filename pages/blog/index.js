@@ -9,13 +9,8 @@ import PageContentWrapper from "@components/PageContentWrapper";
 import HeroBanner from "@components/HeroBanner";
 
 export default function BlogIndex(props) {
-  const {
-    postSummaries,
-    currentPage,
-    totalPages,
-    pageContent,
-    preview,
-  } = props;
+  const { postSummaries, currentPage, totalPages, pageContent, preview } =
+    props;
 
   /**
    * This provides some fallback values to PageMeta so that a pageContent
@@ -55,11 +50,12 @@ export default function BlogIndex(props) {
 }
 
 export async function getStaticProps({ preview = false }) {
+  const previewData = NEXT_PUBLIC_IS_PREVIEW_SITE || preview;
   const postSummaries = await ContentfulApi.getPaginatedPostSummaries(1);
   const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.blogIndex.slug,
     {
-      preview: preview,
+      preview: previewData,
     },
   );
 

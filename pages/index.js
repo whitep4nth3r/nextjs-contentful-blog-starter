@@ -44,10 +44,11 @@ export default function Home(props) {
 }
 
 export async function getStaticProps({ preview = false }) {
+  const previewData = NEXT_PUBLIC_IS_PREVIEW_SITE || preview;
   const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.home.slug,
     {
-      preview: preview,
+      preview: previewData,
     },
   );
 
