@@ -15,7 +15,8 @@
     "prismjs": "^1.23.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-markdown": "^5.0.3"
+    "react-markdown": "^5.0.3",
+    "react-slideshow-image": "^3.7.0"
   },
   "license": "MIT"
 }

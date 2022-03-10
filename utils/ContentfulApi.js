@@ -526,6 +526,40 @@ export default class ContentfulApi {
     return recentPosts;
   }
 
+
+  static async getSlideshowList() {
+    const variables = { limit: Config.pagination.numOfSlides };
+    const query = `query getSlideshowList($limit: Int!) {
+      slideshowCollection(limit: $limit, order: title_DESC) {
+        items {
+          sys {
+            id
+          }
+          title
+          image{
+            url
+            title
+            width
+            height
+            description
+          }
+        }
+      }
+    }`;
+
+    const response = await this.callContentful(query, variables);
+    
+    //console.log(response);
+    
+    const slideshowList = response.data.slideshowCollection.items
+      ? response.data.slideshowCollection.items
+      : [];
+
+    //console.log(slideshowList);
+
+    return slideshowList;
+  }
+
   /**
    * Fetch the total number of blog posts.
    */

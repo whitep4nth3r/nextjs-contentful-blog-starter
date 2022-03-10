@@ -49,6 +49,7 @@ export const Config = {
   pagination: {
     pageSize: 2,
     recentPostsSize: 3,
+    numOfSlides: 2,
   },
   menuLinks: [
     {

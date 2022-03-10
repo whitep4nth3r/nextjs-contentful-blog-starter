@@ -7,9 +7,10 @@ import RecentPostList from "@components/RecentPostList";
 import HeroBanner from "@components/HeroBanner";
 import ContentWrapper from "@components/ContentWrapper";
 import PageContentWrapper from "@components/PageContentWrapper";
+import {Slideshow, Slideshow2} from "@components/Slideshow";
 
 export default function Home(props) {
-  const { pageContent, recentPosts, preview } = props;
+  const { pageContent, recentPosts, preview, slideshow } = props;
   console.log(props);
 
   const pageTitle = pageContent ? pageContent.title : "Domů";
@@ -20,6 +21,7 @@ export default function Home(props) {
 
   return (
     <>
+    <Slideshow2 slides={slideshow}/>
       <MainLayout preview={preview}>
         <PageMeta
           title={pageTitle}
@@ -54,11 +56,16 @@ export async function getStaticProps({ preview = false }) {
 
   const recentPosts = await ContentfulApi.getRecentPostList();
 
+  const slideshow = await ContentfulApi.getSlideshowList();
+  
+
+
   return {
     props: {
       preview,
       pageContent: pageContent || null,
       recentPosts,
+      slideshow,
     },
   };
 }
