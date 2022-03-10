@@ -10,6 +10,7 @@ import PageContentWrapper from "@components/PageContentWrapper";
 
 export default function Home(props) {
   const { pageContent, recentPosts, preview } = props;
+  console.log(props);
 
   const pageTitle = pageContent ? pageContent.title : "Domů";
 
