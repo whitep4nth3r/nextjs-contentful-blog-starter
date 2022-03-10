@@ -10,15 +10,9 @@ import PageContentWrapper from "@components/PageContentWrapper";
 import {Slideshow, Slideshow2} from "@components/Slideshow";
 
 export default function Home(props) {
-<<<<<<< HEAD
   const { pageContent, recentPosts, preview, slideshow } = props;
   console.log(props);
 
-=======
-  const { pageContent, recentPosts, preview } = props;
-  console.log(props);
-  
->>>>>>> 9c8805e1183160136b5ad679c5cb4578a91709e4
   const pageTitle = pageContent ? pageContent.title : "Domů";
 
   const pageDescription = pageContent
