@@ -32,7 +32,9 @@ export const Slideshow2 = (props) => {
     console.log(slides)
 
     return (
+        <>
       <div className="slide-container">
+          <div className="slide-title">test</div>
         <Slide>
         {slides.map(({image: {url,title}})=> {
             
@@ -45,5 +47,9 @@ export const Slideshow2 = (props) => {
             })}
         </Slide> 
       </div>
+      <style jsx global>
+        {GlobalStyles}
+      </style>
+      </>
     )
 }

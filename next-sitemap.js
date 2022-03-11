@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://nextjs-contentful-blog-starter.vercel.app/",
+  siteUrl: "https://vk-test-contentful.netlify.app/",
   generateRobotsTxt: true, // (optional)
   robotsTxtOptions: {
     policies: [{ userAgent: "*", disallow: "/api" }],

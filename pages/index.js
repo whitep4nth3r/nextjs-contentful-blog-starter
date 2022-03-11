@@ -21,7 +21,6 @@ export default function Home(props) {
 
   return (
     <>
-    <Slideshow2 slides={slideshow}/>
       <MainLayout preview={preview}>
         <PageMeta
           title={pageTitle}
@@ -39,6 +38,7 @@ export default function Home(props) {
               <RichTextPageContent richTextBodyField={pageContent.body} />
             </PageContentWrapper>
           )}
+          <Slideshow2 slides={slideshow}/>
           <RecentPostList posts={recentPosts} />
         </ContentWrapper>
       </MainLayout>
