@@ -47,6 +47,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps({ preview = false }) {
+try{
   const pageContent = await ContentfulApi.getPageContentBySlug(
     Config.pageMeta.home.slug,
     {
@@ -68,4 +69,8 @@ export async function getStaticProps({ preview = false }) {
       slideshow,
     },
   };
+}
+catch (error) {
+  console.error(error);
+}
 }

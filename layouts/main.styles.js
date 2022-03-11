@@ -3,9 +3,9 @@ import "prismjs/themes/prism-okaidia.css";
 
 export default css.global`
   :root {
-    --color-primary: #84b9f5;
+    --color-primary: #c9222f;
     --color-secondary: #16875d;
-    --color-tertiary: #84b9f5;
+    --color-tertiary: #c9222f;
     --color-foreground: #283848;
     --color-background: #ffffff;
     --color-muted: #666666;

@@ -547,6 +547,7 @@ export default class ContentfulApi {
       }
     }`;
 
+  try {
     const response = await this.callContentful(query, variables);
     
     //console.log(response);
@@ -558,6 +559,55 @@ export default class ContentfulApi {
     //console.log(slideshowList);
 
     return slideshowList;
+  }
+    catch (error) {
+      console.error(error);
+    }
+  }
+
+
+  static async getFormList() {
+      const variables = { limit: Config.pagination.numOfAnswers };
+    const query = `query getFormList($limit: Int!) {
+      formCollection(limit: $limit) {
+        items {
+          sys {
+            id
+          }
+          name
+          email
+          message {
+            json
+            links {
+              entries {
+                inline {
+                  sys {
+                    id
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }`;
+
+  try {
+    const response = await this.callContentful(query, variables);
+    
+    //console.log(response);
+    
+    const formList = response.data.formCollection.items
+      ? response.data.formCollection.items
+      : [];
+
+    //console.log(slideshowList);
+
+    return formList;
+  }
+  catch (error) {
+    console.error(error);
+  }
   }
 
   /**

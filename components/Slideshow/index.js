@@ -1,10 +1,7 @@
-import GlobalStyles from "./main.styles.js";
-import Header from "@components/Header";
-import Footer from "@components/Footer";
-import PreviewBanner from "@components/PreviewBanner";
 import Image from "next/dist/client/image";
 import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css'
+import 'react-slideshow-image/dist/styles.css';
+import SlideshowStyles from "@styles/Slideshow.module.css";
 
 export function Slideshow(props) {
     console.log(props);
@@ -19,9 +16,6 @@ export function Slideshow(props) {
            <Image src={url} width={width} height={height} alt={title}/>
            );
         })}
-      <style jsx global>
-        {GlobalStyles}
-      </style>
     </>
   );
 }
@@ -33,7 +27,7 @@ export const Slideshow2 = (props) => {
 
     return (
         <>
-      <div className="slide-container">
+      <div className={SlideshowStyles.slide__title}>
           <div className="slide-title">test</div>
         <Slide>
         {slides.map(({image: {url,title}})=> {
@@ -47,9 +41,6 @@ export const Slideshow2 = (props) => {
             })}
         </Slide> 
       </div>
-      <style jsx global>
-        {GlobalStyles}
-      </style>
       </>
     )
 }

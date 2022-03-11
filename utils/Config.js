@@ -15,8 +15,8 @@ export const Config = {
   site: {
     owner: "VK test",
     title: "Next.js + Contentful blog test",
-    domain: "nextjs-contentful-blog-starter.vercel.app",
-    email: "example@example.com",
+    domain: "https://vk-test-contentful.netlify.app/",
+    email: "vasek@klicka.eu",
     feedDescription: "RSS Feed for example.com",
   },
   pageMeta: {
@@ -30,6 +30,10 @@ export const Config = {
     blogIndex: {
       url: `${SITE_URL}/blog`,
       slug: "/blog",
+    },
+    formIndex: {
+      url: `${SITE_URL}/form`,
+      slug: "/form",
     },
     blogIndexPage: {
       slug: "/blog/page/[page]",
@@ -50,6 +54,7 @@ export const Config = {
     pageSize: 2,
     recentPostsSize: 3,
     numOfSlides: 2,
+    numOfAnswers: 10,
   },
   menuLinks: [
     {
@@ -59,6 +64,10 @@ export const Config = {
     {
       displayName: "Blog",
       path: "/blog",
+    },
+    {
+      displayName: "Form",
+      path: "/form",
     },
   ],
 };
