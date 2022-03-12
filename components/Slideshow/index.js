@@ -4,7 +4,7 @@ import 'react-slideshow-image/dist/styles.css';
 import SlideshowStyles from "@styles/Slideshow.module.css";
 
 export function Slideshow(props) {
-    console.log(props);
+    //console.log(props);
     const {slides} = props;
 
   return (
@@ -21,9 +21,9 @@ export function Slideshow(props) {
 }
 
 export const Slideshow2 = (props) => {
-    console.log(props)
+    //console.log(props)
     const {slides} = props;
-    console.log(slides)
+    //console.log(slides)
 
     return (
         <>

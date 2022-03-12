@@ -46,6 +46,8 @@ export default function formIndex(props) {
           </PageContentWrapper>
         )}
         
+          <BasicForm/>
+
         {answers.map(({email, name, message: {json: {content}}}) => {
           console.log(content);
            return(
@@ -54,7 +56,6 @@ export default function formIndex(props) {
         })}
 
       </ContentWrapper>
-
     </MainLayout>
   );
 }

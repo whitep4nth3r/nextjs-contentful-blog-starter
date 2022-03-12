@@ -660,4 +660,46 @@ export default class ContentfulApi {
       throw new Error("Could not fetch data from Contentful!");
     }
   }
+
+
+static async createContentfulEntry(){
+const contentful = require('contentful-management')
+
+const client = contentful.createClient({
+  accessToken: 'CFPAT-nh3h6uqrneRA-i3QnAunBSXu06EZ_SllOQkW-ZZaM8Y'
+})
+
+// Create entry
+const dataCreate = client.getSpace('ugjhw3umzt7r')
+.then((space) => space.getEnvironment('master'))
+.then((environment) => environment.createEntryWithId('test', '5KsDBWseXY6QegucYAoacS', {
+  fields: {
+    title: {
+      'en-US': 'Entry title'
+    }
+  }
+}))
+.then((entry) => console.log(entry))
+.catch(console.error)
+
+
+// Update entry
+
+const dataUpdate = client.getSpace('ugjhw3umzt7r')
+.then((space) => space.getEnvironment('master'))
+.then((environment) => environment.getEntry('5KsDBWseXY6QegucYAoacS'))
+.then((entry) => {
+  entry.fields.title['en-US'] = 'New entry title :)'
+//  console.log(entry.update())
+return entry.update()
+})
+.then((entry) => entry.publish())
+.then((entry) => console.log(`Entry ${entry.sys.id} updated.`))
+.catch(console.error)
+
+
+const final = {final: 1}
+
+return final;
+}
 }
