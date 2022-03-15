@@ -21,7 +21,7 @@
          setTimeout(() => {
            console.log('test');
            setSubmitting(false);
-         }, 500);
+         }, 400);
          const added = await sendToContentful(values);
          console.log(added);
        }}
