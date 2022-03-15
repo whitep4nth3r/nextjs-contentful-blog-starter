@@ -17,13 +17,12 @@
          }
          return errors;
        }}
-       onSubmit={(values, { setSubmitting }) => {
+       onSubmit={async (values, { setSubmitting }) => {
          setTimeout(() => {
-           console.log(values);
-           const resultFromSubmit = setSubmitting(false);
-           console.log(resultFromSubmit);
-         }, 400);
-         const added = sendToContentful(values);
+           console.log('test');
+           setSubmitting(false);
+         }, 500);
+         const added = await sendToContentful(values);
          console.log(added);
        }}
      >
@@ -81,7 +80,7 @@
   const client = contentful.createClient({
     accessToken: 'CFPAT-nh3h6uqrneRA-i3QnAunBSXu06EZ_SllOQkW-ZZaM8Y'
   })
-  
+
   // Create entry
   const dataCreate = client.getSpace('ugjhw3umzt7r')
   .then((space) => space.getEnvironment('master'))
@@ -115,7 +114,7 @@ nodeType: 'document'
      }
     }
   }))
-  .then((response) => response.json())
+  .then((response) => response)
   .catch(console.error)
 
   return dataCreate
