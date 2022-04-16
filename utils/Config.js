@@ -19,6 +19,11 @@ export const Config = {
     email: "vasek@klicka.eu",
     feedDescription: "RSS Feed for example.com",
   },
+  contentful: {
+    accessToken: "CFPAT-nh3h6uqrneRA-i3QnAunBSXu06EZ_SllOQkW-ZZaM8Y",
+    space: "ugjhw3umzt7r",
+    entry: "master",
+  },
   pageMeta: {
     openGraph: {
       twitterUser: "contentful",

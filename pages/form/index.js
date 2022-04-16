@@ -8,15 +8,18 @@ import ContentWrapper from "@components/ContentWrapper";
 import PageContentWrapper from "@components/PageContentWrapper";
 import HeroBanner from "@components/HeroBanner";
 import {BasicForm} from "@components/Form";
+import {InteractiveForm} from "@components/InteractiveForm";
+import { getCustomRoute } from "next/dist/server/server-route-utils";
 
 export default function formIndex(props) {
   const {
     pageContent,
     preview,
-    answers
+    answers,
+    test
   } = props;
 
-  console.log(answers);
+  //console.log(answers);
 
   /**
    * This provides some fallback values to PageMeta so that a pageContent
@@ -45,15 +48,23 @@ export default function formIndex(props) {
             <RichTextPageContent richTextBodyField={pageContent.body} />
           </PageContentWrapper>
         )}
-        
+
+          <InteractiveForm data={test}/>
+
           <BasicForm/>
 
-        {answers.map(({email, name, message: {json: {content}}}) => {
-          console.log(content);
+          <div className="columns-3 my-10">
+
+        {answers.map(({email, name, message: {json: {content}}},i) => {
+          //console.log(content);
            return(
-           `${email} / ${name} / ${content[0].content[0].value}`
+            <p key={i} className="mb-2 p-2 hover:bg-gray-50 cursor-pointer rounded-lg border break-normal">
+           {++i}. {email} / {name} / {content[0].content[0].value}
+           </p>
            );
         })}
+
+            </div>
 
       </ContentWrapper>
     </MainLayout>
@@ -71,11 +82,20 @@ export async function getStaticProps({ preview = false }) {
 
   const answers = await ContentfulApi.getFormList();
 
+  const getUsers = async () =>{
+  return await fetch('https://reqres.in/api/users?page=2')
+  .then(res => res.json())
+  .then(data => data.data);
+  }
+
+  const test = await getUsers()
+
   return {
     props: {
       preview,
       pageContent: pageContent || null,
       answers,
+      test
     },
   };
 }

@@ -10,10 +10,7 @@ import PageContentWrapper from "@components/PageContentWrapper";
 import {Slideshow, Slideshow2} from "@components/Slideshow";
 
 export default function Home(props) {
-  const { pageContent, recentPosts, preview, slideshow, test } = props;
-  console.log(props);
-
-
+  const { pageContent, recentPosts, preview, slideshow} = props;
 
   const pageTitle = pageContent ? pageContent.title : "Domů";
 
@@ -60,17 +57,13 @@ try{
   const recentPosts = await ContentfulApi.getRecentPostList();
 
   const slideshow = await ContentfulApi.getSlideshowList();
-  
-  const test = await ContentfulApi.createContentfulEntry();
-
 
   return {
     props: {
       preview,
       pageContent: pageContent || null,
       recentPosts,
-      slideshow,
-      test,
+      slideshow
     },
   };
 }

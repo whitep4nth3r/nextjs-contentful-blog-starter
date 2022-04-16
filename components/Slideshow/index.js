@@ -11,7 +11,7 @@ export function Slideshow(props) {
     <>
     <p>test</p>
     {slides.map(({title, image: {url, width, height}}) => {
-        console.log(url);
+        //console.log(url);
            return(
            <Image src={url} width={width} height={height} alt={title}/>
            );
