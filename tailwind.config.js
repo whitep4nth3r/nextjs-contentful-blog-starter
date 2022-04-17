@@ -7,7 +7,8 @@ module.exports = {
       extend: {      
         colors: {
         'vk-red': '#c9222f',
-        'nevim': '#7a81a8'
+        'nevim': '#7a81a8',
+        'active-sky': '#bae6fd'
         },
       },
     },

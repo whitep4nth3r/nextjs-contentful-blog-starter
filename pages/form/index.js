@@ -16,7 +16,8 @@ export default function formIndex(props) {
     pageContent,
     preview,
     answers,
-    test
+    test,
+    hide
   } = props;
 
   //console.log(answers);
@@ -38,12 +39,12 @@ export default function formIndex(props) {
         url={Config.pageMeta.formIndex.url}
       />
 
-      {pageContent.heroBanner !== null && (
+      {!hide && pageContent.heroBanner !== null && (
         <HeroBanner data={pageContent.heroBanner} />
       )}
 
       <ContentWrapper>
-        {pageContent.body && (
+        {!hide && pageContent.body && (
           <PageContentWrapper>
             <RichTextPageContent richTextBodyField={pageContent.body} />
           </PageContentWrapper>
@@ -95,7 +96,8 @@ export async function getStaticProps({ preview = false }) {
       preview,
       pageContent: pageContent || null,
       answers,
-      test
+      test,
+      hide: true
     },
   };
 }
