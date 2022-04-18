@@ -24,7 +24,6 @@ ChartJS.register(
     Legend
   );
 
-    let ranking = 0
 
 export const InteractiveForm = ({data}) => {
     const [userList, setUserList] = useState(data)
@@ -34,12 +33,14 @@ export const InteractiveForm = ({data}) => {
     const [banner, setBanner] = useState(false)
     const [messageToBanner, setMessageToBanner] = useState('')
     const [button, setButton] = useState('Přidat')
+    const [currentFilter, setCurrentFilter] = useState('')
+    const [filterList, setFilterList] = useState(data)
 
     const [dataMap, setDataMap] = useState({
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
         datasets: [
           {
-            label: 'Nejlépe hodnocení',
+            label: 'hodnocení',
             data: [33, 25, 35, 51, 54, 76],
             fill: true,
         backgroundColor: "rgb(54, 162, 235)"
@@ -61,21 +62,54 @@ export const InteractiveForm = ({data}) => {
 
 
 
+    const filterChange = (e) =>{
+      setCurrentFilter(e.target.value)
+      //console.log(e.target.value.length)
+      
+      const re = new RegExp('^' + e.target.value.toLowerCase(),"g");
 
+      const startsWith = e.target.value.length >= 1 ? (
+      //userList.filter((list) => list.email.startsWith(e.target.value)) ---> 
+      
+      userList.filter((list) => {
+        const search = Object.keys(list).map((el) =>{
+          const word = String(list[el]).toLowerCase()
+          return (word.match(re) || []).length;
+        })
+        return search.reduce((a, b) => a + b, 0) >= 1 && list
+      })
+      ) : (
+        userList
+      )
 
+      //console.log(startsWith)
+      setFilterList(startsWith)
+    }
+
+  useEffect(() => {
+    let localList = JSON.parse(localStorage.getItem('userList'));
+    if (localList !== null) {
+      setUserList(localList)
+      //console.log(localList)
+      console.log('uE[]' + a++)
+    }
+  }, []) // empty array as second argument will behave exactly like componentDidMount - means only one time in the beginning of render
+  // in load [] useEffect then [userList] useEffect and [] useEffect set new setUserList and then it's trigger [userList] useEffect
 
   useEffect(() => {
     setCountList(userList.length)
 
- 
     const lab = userList.map((el) => el.first_name)
     dataMap.labels = lab
     const data = userList.map((el) => el.ranking ? el.ranking : 0)
     dataMap.datasets[0].data = data
-    setDataMap(dataMap)
 
-    console.log(userList)
-    console.log(dataMap.datasets[0].data)
+    setFilterList(userList)
+    setDataMap(dataMap)
+    localStorage.setItem('userList', JSON.stringify(userList))
+    
+    console.log('uEuserList' + a++)
+    //console.log(dataMap.datasets[0].data)
     
   },[userList])
 
@@ -87,18 +121,6 @@ export const InteractiveForm = ({data}) => {
       setCurrentItem2(curItem)
   },[currentItem]) //protoze jsem blbec a spatne se mi cetlo y objektu tak jsem to nakopiroval do jineho ktere je pak ve value v input
 
-  
-  useEffect(() => {
-    localStorage.setItem('userList', JSON.stringify(userList))
-  }, [userList])
-
-  /*useEffect(() => {
-    let localList = JSON.parse(localStorage.getItem('userList'));
-    if (localList !== null) {
-      setList(localList)
-    }
-  }, []) // empty array as second argument will behave exactly like componentDidMount - means only one time in the beginning of render
-*/
 
   const handleChange = e => {
     const target = e.target;
@@ -207,7 +229,7 @@ const decreaseRanking = (id) =>{
         
     <div>
 
-    <h2 className="font-medium leading-tight text-4xl mt-0 mb-2 text-vk-red">{a} Formulář 30 days - {countList}</h2>
+    <h2 className="font-medium leading-tight text-4xl mt-0 mb-2 text-vk-red">{a} Formulář 30 days - {countList} - localStorage</h2>
 
     <Bar options={optionsMap} data={dataMap} redraw={true}/>
 
@@ -218,6 +240,24 @@ const decreaseRanking = (id) =>{
             <form onSubmit={button === 'Přidat' ? handleSubmit : updateChange}>
               <div className="shadow overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-nevim sm:p-6">
+
+                <div className="grid grid-cols-6 gap-6 mb-5">
+                    <div className="col-span-3 sm:col-span-3">
+                      <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
+                        Filter email
+                      </label>
+                      <input
+                        onChange={filterChange}
+                        value={currentFilter || ''}
+                        type="text"
+                        name="first_name"
+                        id="first_name"
+                        autoComplete="given-name"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-solid border-gray-300"
+                      />
+                    </div>
+                  </div>
+
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-3 sm:col-span-2">
                       <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
@@ -308,7 +348,7 @@ const decreaseRanking = (id) =>{
       </div>
 
     <div className="grid md:grid-cols-3 gap-2 text-center mb-10">
-  {userList && userList.map((usr,i) => {
+  {filterList && filterList.map((usr,i) => {
       
       const showContainer = banner && currentItem2 && currentItem2.email_address === usr.email ? 'bg-active-sky' : 'bg-white'
       
