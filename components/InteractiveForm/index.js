@@ -1,7 +1,11 @@
-import React, { useState, useEffect, PureComponent } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import ContentfulApi from "@utils/ContentfulApi";
-import { Result } from 'postcss';
+import {  } from "@utils/FormControl";
 import Banner from "@components/Banner";
+import { AppContext } from '../../context/state';
+import { Profil } from "@components/InteractiveForm/Profil";
+import { AddForm } from "@components/InteractiveForm/AddForm";
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -27,7 +31,7 @@ ChartJS.register(
 
 export const InteractiveForm = ({data}) => {
     const [userList, setUserList] = useState(data)
-    const [countList, setCountList] = useState(null)
+    
     const [currentItem, setCurrentItem] = useState([])
     const [currentItem2, setCurrentItem2] = useState({})
     const [banner, setBanner] = useState(false)
@@ -35,6 +39,8 @@ export const InteractiveForm = ({data}) => {
     const [button, setButton] = useState('Přidat')
     const [currentFilter, setCurrentFilter] = useState('')
     const [filterList, setFilterList] = useState(data)
+
+    const {countList, setCountList } = useContext(AppContext);
 
     const [dataMap, setDataMap] = useState({
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
@@ -99,16 +105,14 @@ export const InteractiveForm = ({data}) => {
   useEffect(() => {
     setCountList(userList.length)
 
-    const lab = userList.map((el) => el.first_name)
-    dataMap.labels = lab
-    const data = userList.map((el) => el.ranking ? el.ranking : 0)
-    dataMap.datasets[0].data = data
+    dataMap.labels = userList.map((el) => el.first_name)
+    dataMap.datasets[0].data = userList.map((el) => el.ranking ? el.ranking : 0)
 
     setFilterList(userList)
     setDataMap(dataMap)
     localStorage.setItem('userList', JSON.stringify(userList))
     
-    console.log('uEuserList' + a++)
+    console.log('uE/userList' + a++)
     //console.log(dataMap.datasets[0].data)
     
   },[userList])
@@ -237,108 +241,7 @@ const decreaseRanking = (id) =>{
         <div className="md:grid md:grid-cols-3 md:gap-6">
 
           <div className="mt-5 md:mt-0 md:col-span-3">
-            <form onSubmit={button === 'Přidat' ? handleSubmit : updateChange}>
-              <div className="shadow overflow-hidden sm:rounded-md">
-                <div className="px-4 py-5 bg-nevim sm:p-6">
-
-                <div className="grid grid-cols-6 gap-6 mb-5">
-                    <div className="col-span-3 sm:col-span-3">
-                      <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
-                        Filter email
-                      </label>
-                      <input
-                        onChange={filterChange}
-                        value={currentFilter || ''}
-                        type="text"
-                        name="first_name"
-                        id="first_name"
-                        autoComplete="given-name"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-solid border-gray-300"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
-                        Jméno
-                      </label>
-                      <input
-                        onChange={handleChange}
-                        value={currentItem2.first_name || ''}
-                        type="text"
-                        name="first_name"
-                        id="first_name"
-                        autoComplete="given-name"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-solid border-gray-300"
-                      />
-                    </div>
-
-                    <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">
-                        Příjmení
-                      </label>
-                      <input
-                        onChange={handleChange}
-                        value={currentItem2.last_name || ''}
-                        type="text"
-                        name="last_name"
-                        id="last_name"
-                        autoComplete="family-name"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-solid border-gray-300"
-                      />
-                    </div>
-
-                    <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="email_address" className="block text-sm font-medium text-gray-700">
-                        Email
-                      </label>
-                      <input
-                        onChange={handleChange}
-                        value={currentItem2.email_address || ''}
-                        type="text"
-                        name="email_address"
-                        id="email_address"
-                        autoComplete="email"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md border border-solid border-gray-300 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-                        invalid:border-pink-500 invalid:text-pink-600
-                        focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
-                        disabled={button === 'Přidat' ? false : 'disabled'}
-                      />
-                    </div>
-
-                  </div>
-                </div>
-                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                  
-                {button === 'Přidat' ? (
-                  <button
-                    type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                      {button}
-                  </button>)
-                  :
-                  (<div>
-                      <button
-                    type="submit"
-                    className="mr-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                      {button}
-                  </button>
-                  <span
-                  onClick={deleteForm}
-                  className="cursor-pointer inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Smazat formulář
-                </span>
-                </div>
-                  )
-                }
-                
-                </div>
-              </div>
-            </form>
+<AddForm currentFilter={currentFilter} currentItem2={currentItem2} handleSubmit={handleSubmit} updateChange={updateChange} button={button} handleChange={handleChange} deleteForm={deleteForm} setCurrentFilter={setCurrentFilter} userList={userList} setFilterList={setFilterList}/>
           </div>
         </div>
       </div>
@@ -349,45 +252,8 @@ const decreaseRanking = (id) =>{
 
     <div className="grid md:grid-cols-3 gap-2 text-center mb-10">
   {filterList && filterList.map((usr,i) => {
-      
-      const showContainer = banner && currentItem2 && currentItem2.email_address === usr.email ? 'bg-active-sky' : 'bg-white'
-      
       return (
-            <div key={i}>
-            <div className={"block rounded-lg shadow-lg mb-2 " + showContainer}>
-              <div className="overflow-hidden rounded-t-lg h-28 bg-nevim"></div>
-              <div className="w-24 -mt-12 overflow-hidden border border-2 border-white rounded-full mx-auto bg-white">
-                <img src={usr.avatar} />
-              </div>
-              <div className="p-6">
-                <h4 className="text-2xl font-semibold mb-4">{usr.first_name} {usr.last_name}</h4>
-                <hr />
-                <div className="grid md:grid-cols-2 gap-2 pt-5 text-center">
-                <button onClick={changeUser} value={i} className="text-sm text-sky-500 background-transparent font-bold uppercase outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
-                type="button">
-                 Upravit </button>
-                <button onClick={(e) => deleteUser(e,i)} className="text-sm text-sky-500 background-transparent font-bold uppercase outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" 
-                type="button">
-                 Smazat </button>
-                </div>
-                <p className="mt-2 text-sm">
-                  Email:<br/> {usr.email}
-                </p>
-                <p className="mt-2">
-                <button onClick={() => increaseRanking(i)} className="rounded-full fa-arrow-up"><svg className="h-6 w-6 text-blue-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-</svg>
-</button>
-
-                {usr.ranking ? usr.ranking : 0}
-
-                <button onClick={() => decreaseRanking(i)} className="rounded-full fa-arrow-down"><svg className="h-6 w-6 text-blue-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-</svg></button>
-                </p>
-              </div>
-            </div>
-          </div>
+<Profil currentItem2={currentItem2} usr={usr} i={i} changeUser={changeUser} deleteUser={deleteUser} increaseRanking={increaseRanking} decreaseRanking={decreaseRanking}/>
             )
         })}
     </div>
