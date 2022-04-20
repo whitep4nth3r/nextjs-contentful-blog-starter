@@ -38,7 +38,7 @@ export default function Header() {
             const isActive =
               onBlogPost || onBlogIndexPage || router.pathname === link.path;
             const isActiveClass = isActive
-              ? ` border-blue-500 rounded py-2 px-4 bg-blue-500`
+              ? ` border-red-700 rounded py-2 px-4 bg-red-500`
               : "";
 
             return (
