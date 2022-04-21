@@ -74,5 +74,9 @@ export const Config = {
       displayName: "Form",
       path: "/form",
     },
+    {
+      displayName: "Mongo",
+      path: "/mongo",
+    },
   ],
 };

@@ -11,7 +11,7 @@ import {BasicForm} from "@components/Form";
 import {InteractiveForm} from "@components/InteractiveForm";
 import { getCustomRoute } from "next/dist/server/server-route-utils";
 
-export default function formIndex(props) {
+export default function FormIndex(props) {
   const {
     pageContent,
     preview,
