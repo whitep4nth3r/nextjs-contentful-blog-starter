@@ -158,9 +158,9 @@ Replacing the variables with the same values you used above. Navigate to your si
 
 ```text
 CONTENTFUL_PREVIEW_SECRET
-NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN
+CONTENTFUL_PREVIEW_ACCESS_TOKEN
 ```
 
-Set `CONTENTFUL_PREVIEW_SECRET` to the value you generated above and used for `$SECRET` in the preview URLs. Set `NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN` to your Contentful Content Preview API access token which can be found under Settings > API keys.
+Set `CONTENTFUL_PREVIEW_SECRET` to the value you generated above and used for `$SECRET` in the preview URLs. Set `CONTENTFUL_PREVIEW_ACCESS_TOKEN` to your Contentful Content Preview API access token which can be found under Settings > API keys.
 
 Trigger a new deploy of your site on Netlify so the new variables are applied and you should now be able to enter Preview mode by clicking the preview button on relevant content entries.
